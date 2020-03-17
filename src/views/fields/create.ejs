@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/head.ejs")%> 
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/createField.css">
+
+	<title>METEGOL | Agregar Cancha</title>
+</head>
+
+<body>
+    <!--Header-->
+
+    <%- include("../partials/header.ejs")%> 
+    
+    <!--Main Content-->
+
+    <div class="align">
+      <div class="form">
+        <form action="/fields" method="POST" enctype="multipart/form-data">
+        <h1>Agregar cancha</h1>
+          <div class="field-form">
+                  
+            <div class="input-fields">
+              <label>Nombre del complejo:</label>
+              <input type="text" name="complexName" class="input" placeholder="Nombre del complejo*">
+              
+              <label>Dirección:</label>
+              <input type="text" name="address" class="input" placeholder="Calle, altura, barrio, CP*" minlength="6">
+
+              <label>Tipo de cancha: </label>
+              <select class="selector" name="fieldType">
+                <option disabled selected>Seleccione tipo de cancha</option>
+                <option value="F5">Futbol 5</option>
+                <option value="F7">Futbol 7</option>
+                <option value="F9">Futbol 9</option>
+                <option value="F11">Futbol 11</option>
+              </select>
+            </div>
+            
+            <div class="input-fields-sd">
+              <label>Nombre de la cancha:</label>
+              <input type="text" class="input" name="name" placeholder="Nombre de la cancha*">
+               
+              <label>Teléfono:</label>
+              <input type="tel" name="phone" class="input" minlength="8" placeholder="12345678*">
+
+              <label>Precio del alquiler por hora: </label>
+              <input class="input" type="number" name="price" placeholder="0">
+            </div>
+              
+          </div>
+
+          <div class="description">
+              <label>Servicios: </label>
+              <input class="input" name="description" placeholder="Descripción de servicios*">
+          </div>
+          
+          <div class="uploads">
+            <label>Elige tres imágenes: </label>
+
+            <div class="upload-images">
+
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" name="image1" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Imagen 1</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" name="image2" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Imagen 2</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" name="image3"class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Imagen 3</label>
+                </div>
+              </div>
+           </div>  
+            </div>
+
+        <div><button type="submit" value="submit" class="btn btn-primary">GUARDAR</button></div>
+      </form>
+      </div>
+    </div>
+        
+    <!--Footer-->
+    <%- include("../partials/footer.ejs")%> 
+    
+	</div>
+</body>
+</html>

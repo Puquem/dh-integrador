@@ -1,0 +1,269 @@
+/*Enlace de fuente */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+/*CSS Base*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway',sans-serif, Helvetica;
+  background: linear-gradient(rgba(2, 11, 128, 0.5), rgba(2, 160, 94, 0.5)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+ul,ol{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Header*/
+.header{
+  background-color:#05386b;
+  height: 70px;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 200px;
+  margin-top: -30px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.header a{
+  /*float: left;*/
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.hamburguer-icon {
+  display: none;
+}
+
+.header-right {
+  margin-top: 20px;
+}
+
+.fas fa-shopping-cart{
+  color: beige;
+}
+
+.header-right li{
+  display:inline-block;
+  margin: 0px 5px;
+}
+
+.header-right a {
+  color:#edf5e1;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.header-right img {
+  height: 40px;
+  width: auto;
+}
+
+@media (max-width: 670px) {
+ 
+  .header-right {
+    display: none;
+  }
+ 
+  .hamburguer-icon {
+    display: block;
+  }
+}
+
+/* Main Content*/ 
+
+.align{
+  text-align: center;
+  margin-top: 70px;
+}
+
+.form{
+  display: inline-block;
+  text-align: left;
+  top: 50%;
+  background: rgba(245, 241, 241, 0.8);
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  max-width: 80%;
+}
+
+.form h1{
+  color: rgb(65, 65, 65);
+  text-align: left;
+  font-style: bold;
+  margin-bottom: 30px;
+  font-size: 3vh;
+}
+
+.field-form{
+  display: flex;
+  margin: 0 auto;
+} 
+  
+.input-fields{
+  flex-direction: column;
+  margin-right: 2%;
+  width: 100%;
+}
+
+.input-fields-sd{
+  flex-direction: column;
+  width: 100%;
+  margin-left: 2%;
+}
+ 
+.input-fields input,
+.input-fields-sd input
+{
+  margin: 10px 0px;
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #063549;
+  color:#063549;
+  width: 100%;
+}
+
+label{
+  margin: 10px 0px;
+}
+
+.selector{
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #063549;
+  color:#063549;
+  width: 100%;
+  height: 28px;
+  margin: 10px 0px;
+}
+
+/* Eliminar el arrow por default en el type="number" */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.description{
+  float: center;
+  text-align: left;
+  align-items: left;
+}
+
+input{
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #063549;
+  color:#063549;
+  width: 100%;
+  height: 28px;
+  margin: 10px 0px;
+}
+
+.upload-images{
+  display: flex;
+  margin: 0 auto;
+}
+
+.custom-file{
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-group{
+  margin: 0px 1%;
+}
+
+.btn {
+  background-color:#05386b; ;
+  border-color:#05386b; ;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  float: center;
+  cursor: pointer;
+  margin-top: 30px;
+  width: 100%;
+}
+  
+/*Footer*/
+.footer{
+  background-color:#05386b;
+  overflow: hidden;
+  max-height: 70px;
+}
+  
+.footer-left a{
+  float: left;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+  
+.footer-left i{
+  color: #edf5e1;
+  font-size: 3vh;
+}
+  
+.footer-right{
+  float: right;
+  margin-top: 10px;
+}
+  
+.footer-right li{
+  display :inline-block;
+  margin: 5px;
+}
+  
+.footer-right li a {
+  color:#edf5e1;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  margin: 10px;
+}
+  

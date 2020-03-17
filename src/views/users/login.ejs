@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%- include("../partials/head.ejs")%> 
+		<!--===============================================================================================-->
+		<link rel="stylesheet" href="/css/login.css">
+	
+		<title>METEGOL | Login</title>
+	</head>
+ 
+ <body>
+	
+	<!--Header-->
+	<%- include("../partials/header.ejs")%> 
+		
+	<!--Main Content-->
+	
+	<div class="align">
+		<div class="form">
+			<h1>Ingresa</h1>
+				<div class="user-form">
+					<div class="input-fields">
+						<input type="text" class="input" placeholder="Email*" name="uname" required>
+						<input type="password" class="input" placeholder="Contraseña*" name="pwd" required>
+					</div>
+				</div>
+			<div><button type="submit" class="btn btn-primary">INGRESAR</button></div>
+				<div class="manageUser">
+					<ul>
+						<li><a href="/users/create"><i class="fas fa-user-plus"></i>     Crea tu usuario</a></li>
+						<li><a href="/forgotpass"><i class="fas fa-unlock"></i>      Recuperar contraseña</a></li>
+					</ul>
+				</div>	
+		</div>
+	</div>
+	
+	<!--Footer-->
+	<%- include("../partials/footer.ejs")%> 
+
+ </body>
+</html>

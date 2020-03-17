@@ -1,0 +1,208 @@
+/*Enlace de fuente */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+/*CSS Base*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway',sans-serif, Helvetica;
+  background: linear-gradient(rgba(2, 11, 128, 0.5), rgba(2, 160, 94, 0.5)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 200%;
+  width: 100%;
+}
+
+ul,ol{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Header*/
+.header{
+  background-color:#05386b;
+  height: 70px;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 200px;
+  margin-top: -30px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.header a{
+  /*float: left;*/
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.hamburguer-icon {
+  display: none;
+}
+
+.header-right {
+  margin-top: 20px;
+}
+
+.fas fa-shopping-cart{
+  color: beige;
+}
+
+.header-right li{
+  display:inline-block;
+  margin: 0px 5px;
+}
+
+.header-right a {
+  color:#edf5e1;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.header-right img {
+  height: 40px;
+  width: auto;
+}
+
+@media (max-width: 670px) {
+ 
+  .header-right {
+    display: none;
+  }
+ 
+  .hamburguer-icon {
+    display: block;
+  }
+}
+
+/*Jugar*/
+
+.jugar{
+  padding:15px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.jugar h1{
+  color: white;
+  font-style: bold;
+  text-align:center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-size: 10vh;
+}
+
+.subtitulo{
+  color: white;
+  font-size: 3vh;
+}
+
+.jugar form{
+  float:center;
+  margin-top: 50px;
+}
+
+.row {
+  justify-content: center;
+  padding: 10px;
+  margin-top: 50px;
+  background-color: rgba(2, 160, 94, 0.5);
+}
+
+/*Cajas*/
+
+.container{
+  width: 100%;
+}
+
+.row #box{
+  justify-content: center;
+  padding: 10px;
+  margin-top: 50px;
+  box-sizing: border-box;
+  background-color: rgba(2, 160, 94);
+}
+
+.rounded{
+  width:100%;
+  height: 200px;
+  border-radius: 40%;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color:#05386b; ;
+  border-color:#05386b; ;
+  color: white;
+  margin: 10px;
+  font-style: bold;
+}
+
+/*Footer*/
+.footer{
+  background-color:#05386b;
+  overflow: hidden;
+  max-height: 70px;
+}
+
+.footer-left a{
+  float: left;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.footer-left i{
+  color: #edf5e1;
+  font-size: 3vh;
+}
+
+.footer-right{
+  float: right;
+  margin-top: 10px;
+}
+
+.footer-right li{
+  display :inline-block;
+  margin: 5px;
+}
+
+.footer-right li a {
+  color:#edf5e1;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  margin: 10px;
+}

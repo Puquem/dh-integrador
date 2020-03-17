@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/head.ejs")%> 
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/showField.css">
+	
+	<title>METEGOL | Detalle Cancha</title>
+</head>
+<body>
+	<!--Header-->
+	<%- include("../partials/header.ejs")%> 
+		
+	<!--Main Content-->
+	<div class="align">
+		<div class="form">
+			
+			<h1 class="nombreCancha"> <%= field.name %></h1>
+		
+			<div class="body">
+
+				<!-- Carousel de imágenes -->
+
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="500">
+					
+					<ul class="carousel-indicators">
+						<li data-target="#demo" data-slide-to="0" class="active"></li>
+						<li data-target="#demo" data-slide-to="1"></li>
+						<li data-target="#demo" data-slide-to="2"></li>
+					  </ul>
+					<div class="carousel-inner">
+					  <div class="carousel-item active">
+						  <img src="<%= field.image1 %>" class="d-block w-100" alt="...">
+					  </div>
+					  <div class="carousel-item">
+						<img src="<%= field.image2 %>" class="d-block w-100" alt="...">
+					  </div>
+					  <div class="carousel-item">
+						<img src="<%= field.image3 %>" class="d-block w-100" alt="...">
+					  </div>
+					</div>
+
+					<a class="carousel-control-prev"data-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					  </a>
+					  <a class="carousel-control-next" data-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</a>
+				  </div>
+
+				  <!-- Descripción producto -->	
+				<div class="descripcion">
+					<h2 class="titulo">Dirección</h2>
+					<p><%= field.Address %></p>
+					<a href="https://www.google.com/maps/search/<%= field.name %>" frameborder='0'>Ver ubicacion en mapa</a> 
+					<h2 class="titulo">Teléfono</h2>
+					<p><%= field.phone %></p>
+					<h2>Servicios</h2>
+					<p><%= field.description %></p>
+					
+					<form action="/fields/:id" method="POST" enctype="multipart/form-data">
+						<div><button type="submit" class="btn btn-primary">EDITAR</button></div> 
+					</form>
+
+					<form action="/fields/:id" method="DELETE" enctype="multipart/form-data">
+						<div><button type="submit" class="btn btn-primary">ELIMINAR</button></div> 
+					</form>
+
+					<section class="buttons">
+						<a class="button" href="/fields/">&larr; Volver al listado</a>
+						<form class="has-buttons" action="/fields/<%= product.id %>?_method=DELETE" method="POST">
+							<button class="button is-danger" type="submit">ELIMINAR</button>
+						</form>
+						<a class="button is-primary" href="/productos/<%= product.id %>/editar">EDITAR</a>
+					</section>
+				</div> 	
+
+					<!-- Sección confirmar reserva -->	
+				<section class="reserva">
+					<form action="/fields/create" method="POST" enctype="multipart/form-data"></form>
+						<div class="contenedor">
+							<h1>RESERVA</h1>
+							
+								<select class="selector" name="horario">
+									<option disabled selected>Seleccione horario</option>
+									<option label="06:00" value="06:00:00">06:00</option>
+									<option label="06:30" value="06:30:00">06:30</option>
+									<option label="07:00" value="07:00:00">07:00</option>
+									<option label="07:30" value="07:30:00">07:30</option>
+									<option label="08:00" value="08:00:00">08:00</option>
+									<option label="08:30" value="08:30:00">08:30</option>
+									<option label="09:00" value="09:00:00">09:00</option>
+									<option label="09:30" value="09:30:00">09:30</option>
+									<option label="10:00" value="10:00:00">10:00</option>
+									<option label="10:30" value="10:30:00">10:30</option>
+									<option label="11:00" value="11:00:00">11:00</option>
+									<option label="11:30" value="11:30:00">11:30</option>
+									<option label="12:00" value="12:00:00">12:00</option>
+									<option label="12:30" value="12:30:00">12:30</option>
+									<option label="13:00" value="13:00:00">13:00</option>
+									<option label="13:30" value="13:30:00">13:30</option>
+									<option label="14:00" value="14:00:00">14:00</option>
+									<option label="14:30" value="14:30:00">14:30</option>
+									<option label="15:00" value="15:00:00">15:00</option>
+									<option label="15:30" value="15:30:00">15:30</option>
+									<option label="16:00" value="16:00:00">16:00</option>
+									<option label="16:30" value="16:30:00">16:30</option>
+									<option label="17:00" value="17:00:00">17:00</option>
+									<option label="17:30" value="17:30:00">17:30</option>
+									<option label="18:00" value="18:00:00">18:00</option>
+									<option label="18:30" value="18:30:00">18:30</option>
+									<option label="19:00" value="19:00:00">19:00</option>
+									<option label="19:30" value="19:30:00">19:30</option>
+									<option label="20:00" value="20:00:00">20:00</option>
+									<option label="20:30" value="20:30:00">20:30</option>
+									<option label="21:00" value="21:00:00">21:00</option>
+									<option label="21:30" value="21:30:00">21:30</option>
+									<option label="22:00" value="22:00:00">22:00</option>
+									<option label="22:30" value="22:30:00">22:30</option>
+									<option label="23:00" value="23:00:00">23:00</option>
+									<option label="23:30" value="23:30:00">23:30</option>
+								</select>
+
+								<select class="selector" name="jugadores">
+									<option selected>Cantidad de jugadores</option>
+									<option value="F5">Futbol 5</option>
+									<option value="F7">Futbol 7</option>
+									<option value="F9">Futbol 9</option>
+									<option value="F11">Futbol 11</option>
+								</select>
+								
+							<div><button type="submit" class="btn btn-primary">CONFIRMAR RESERVA</button></div> 
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</div>
+				
+	<!--Footer-->
+	<%- include("../partials/footer.ejs")%> 
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/head.ejs")%> 
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/fieldList.css">
+	
+	<title>METEGOL | Listado de canchas</title>
+</head>
+
+<body>
+	
+	<!--Header-->
+	<%- include("../partials/header.ejs")%> 
+	
+	<!--Main Content-->
+	<div class="align">
+		<div class="box">
+			<div class="container-title">
+				<h1>Listado de canchas</h1>
+				<div class="right">
+					<li><a href="/fields/create">AGREGAR CANCHAS</a></li>
+				</div>
+			</div>
+			<div class="row">
+				
+				<% products.forEach( field => { %>
+
+					<div class="col-lg-3 col-md-6 mb-" id ="space">
+						<div class="card h-100">
+							<a href="/fields/<%= field.id %>"><img class="card-img-top" src=<%= field.image1 %> alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a href="/fields/<%= field.id %>"><%= field.name %></a>
+								</h4>
+								<p class="card-text"><%= field.description %></p>
+							</div>
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary" href="/fields/<%= field.id %>">Ver detalle</button>	
+							</div>
+						</div>
+					</div>
+				<% })%>
+				
+			</div>
+		</div>
+	</div>
+	
+	<!--Footer -->
+	<%- include("../partials/footer.ejs")%> 
+	
+ </body>
+</html>
