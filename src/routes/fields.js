@@ -29,14 +29,14 @@ router.post('/', upload.any(), fieldsController.store);
 /* GET - Field Detail*/
 router.get('/:id', fieldsController.show);
 
-/* GET - Edit Field Form
-router.get('/:id/edit', fieldsController.edit);*/
+/* GET - Edit Field Form */
+router.get('/:id/edit', fieldsController.edit);
 
-/* PUT - Edit Field Form
-router.put('/:id', upload.any(), fieldsController.update);*/
+/* PUT - Edit Field Form */
+router.put('/:id', upload.any(), fieldsController.update);
 
-/* DELETE - Edit Field Detail 
-router.delete('/:id', fieldsController.destroy);*/
+/*DELETE - Edit Field Detail*/
+router.delete('/:id', fieldsController.destroy);
 
 module.exports = router;
 

@@ -28,7 +28,7 @@
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<a href="/fields/<%= field.id %>"><img class="card-img-top" src=<%= field.image1 %> alt=""></a>
+							<a href="/fields/<%= field.id %>"><img class="card-img-top" src="/images/fields/<%= field.image1 ? field.image1:'default-product-image.png' %>"></a>
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="/fields/<%= field.id %>"><%= field.name %></a>

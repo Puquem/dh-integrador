@@ -104,94 +104,34 @@ a {
 
 /* Body */
 
-.align{
-  text-align: center;
-  margin:5%;
-}
-
-.form{
+.container{
   display: inline-block;
   background: rgba(245, 241, 241, 0.8);
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  width: 75%;
+  width:50%;
+  margin:5%;
 }
 
-.container-title {
-  max-width: 1400px;
-  margin: 30PX ;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.nombreCancha{
+h1{
   color: rgb(65, 65, 65);
   font-style: bold;
   text-align: left;
-}
-
-.right li{
-  display:inline-block;
-  margin: 10px 10px;
-}
-
-.right a {
-  color: rgb(65, 65, 65);
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 15px;
-}
-
-.body {
-  max-width: 1400px;
-  margin: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-  margin:auto
-}
-
-/* Carousel */
-#carouselExampleSlidesOnly{
-  width: 30%;
-  height: 400px;
-  width: 400px;
-  justify-content: center;
-  align-items: center;  
-  margin:15px;
-}
-
-/* Descripcion */
-.descripcion{
-  width: 50%;
-  padding-top: 2.5% ;
-  align-items: left;
-  color: rgb(65, 65, 65);
-  text-align: left; 
-}
-
-.titulo{
-  align-items: left;
-  color: rgb(65, 65, 65);
   margin:10px 0px;
 }
+
+.messages{
+  color: rgb(65, 65, 65);
+  font-style: bold;
+  text-align: left;
+  margin:10px 0px;
+}
+
 p{
   align-items: left;
   color: rgb(65, 65, 65);
   margin:10px 0px;
-}
-
-.buttons{
-  max-width: 1400px;
-  margin: 30PX ;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
 }
 
 /* Footer */

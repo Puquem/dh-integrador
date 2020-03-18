@@ -119,7 +119,6 @@ a {
 }
 
 .container-title {
-  max-width: 1400px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;

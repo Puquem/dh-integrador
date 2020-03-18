@@ -121,12 +121,30 @@ a {
   max-width: 80%;
 }
 
+.container-title {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .form h1{
   color: rgb(65, 65, 65);
-  text-align: left;
   font-style: bold;
-  margin-bottom: 30px;
-  font-size: 3vh;
+  text-align: left;
+}
+
+.right li{
+display:inline-block;
+margin: 10px 10px;
+}
+
+.right a {
+color: rgb(65, 65, 65);
+text-align: center;
+text-transform: uppercase;
+font-size: 15px;
 }
 
 .field-form{
@@ -200,7 +218,10 @@ input{
 
 .upload-images{
   display: flex;
-  margin: 0 auto;
+}
+
+p{
+  margin: 0px 10px;
 }
 
 .custom-file{

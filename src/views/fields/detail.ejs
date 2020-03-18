@@ -21,7 +21,7 @@
 			<div class="container-title">
 				<h1 class="nombreCancha"> <%= product.name %></h1>
 				<div class="right">
-					<li><a class="btn" href="/fields/">&larr; VOLVER AL LISTADO</a></li>
+					<li><a href="/fields/">&larr; Volver al listado</a></li>
 				</div>
 			</div>
 			
@@ -37,13 +37,13 @@
 					</ul>
 					<div class="carousel-inner">
 					  <div class="carousel-item active">
-						  <img src="<%= product.image1 %>" class="d-block w-100" alt="...">
+						  <img src="/images/fields/<%= product.image1 ? product.image1 : 'default-product-image.png' %>" class="d-block w-100" alt="...">
 					  </div>
 					  <div class="carousel-item">
-						<img src="<%= product.image2 %>" class="d-block w-100" alt="...">
+						<img src="/images/fields/<%= product.image2 ? product.image2 : 'default-product-image.png' %>" class="d-block w-100" alt="...">
 					  </div>
 					  <div class="carousel-item">
-						<img src="<%= product.image3 %>" class="d-block w-100" alt="...">
+						<img src="/images/fields/<%= product.image3 ? product.image3 : 'default-product-image.png' %>" class="d-block w-100" alt="...">
 					  </div>
 					</div>
 					<a class="carousel-control-prev"data-slide="prev">
@@ -57,15 +57,15 @@
 				  <!-- Descripción producto -->	
 				<div class="descripcion">
 					<h3 class="titulo">Dirección</h3>
-					<p><%= product.Address %></p>
-					<a href="https://www.google.com/maps/search/<%= product.name %>" frameborder='0'>Ver ubicación en el mapa</a> 
+					<p><%= product.address %></p>
+					<p><a href="https://www.google.com/maps/search/<%= product.address %>">Ver ubicación en el mapa</a></p>
 					<h3 class="titulo">Teléfono</h3>
 					<p><%= product.phone %></p>
 					<h3>Servicios</h3>
 					<p><%= product.description %></p>
 					
 					<section class="buttons">
-						<form class="has-buttons" action="/fields/<%= product.id %>?_method=DELETE" method="POST">
+						<form class="has-buttons" action="?_method=DELETE" method="POST" href="/fields/<%= product.id %>">
 							<button class="btn btn-danger" type="submit">ELIMINAR</button>
 						</form>
 						<a class="btn btn-primary" type="submit" href="/fields/<%= product.id %>/edit">EDITAR</a>

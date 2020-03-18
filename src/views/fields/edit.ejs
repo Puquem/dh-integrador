@@ -5,7 +5,7 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" href="/css/createField.css">
 
-	<title>METEGOL | Agregar Cancha</title>
+	<title>METEGOL | Editar Cancha</title>
 </head>
 
 <body>
@@ -17,27 +17,27 @@
 
     <div class="align">
       <div class="form">
-        <form action="/fields" method="POST" enctype="multipart/form-data">
-          
-          <div class="container-title">
-            <h1>Agregar cancha</h1>
-            <div class="right">
-              <li><a href="/fields/">&larr; Volver al listado</a></li>
-            </div>
-          </div>
-
+        <form action="/fields/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            
+            <div class="container-title">
+				<h1>Editar cancha</h1>
+				<div class="right">
+					<li><a href="/fields/<%= product.id %>">&larr; Volver al detalle de cancha</a></li>
+				</div>
+			</div>
+			
           <div class="field-form">
                   
             <div class="input-fields">
               <label>Nombre del complejo:</label>
-              <input type="text" name="complexName" class="input" placeholder="Nombre del complejo*">
+              <input type="text" name="complexName" class="input" value="<%= product.complexName %>">
               
               <label>Dirección:</label>
-              <input type="text" name="address" class="input" placeholder="Calle, altura, barrio, CP*">
+              <input type="text" name="address" class="input" value="<%= product.address %>">
 
               <label>Tipo de cancha: </label>
               <select class="selector" name="fieldType">
-                <option disabled selected>Seleccione tipo de cancha</option>
+                <option value="<%= product.fieldType %>"></option>
                 <option value="F5">Futbol 5</option>
                 <option value="F7">Futbol 7</option>
                 <option value="F9">Futbol 9</option>
@@ -47,20 +47,20 @@
             
             <div class="input-fields-sd">
               <label>Nombre de la cancha:</label>
-              <input type="text" class="input" name="name" placeholder="Nombre de la cancha*">
+              <input type="text" class="input" name="name" value="<%= product.name %>">
                
               <label>Teléfono:</label>
-              <input type="tel" name="phone" class="input" placeholder="12345678*">
+              <input type="tel" name="phone" class="input" value="<%= product.phone %>">
 
               <label>Precio del alquiler por hora: </label>
-              <input class="input" type="number" name="price" placeholder="0">
+              <input class="input" type="number" name="price" value="<%= product.price %>">
             </div>
               
           </div>
 
           <div class="description">
               <label>Servicios: </label>
-              <input class="input" name="description" placeholder="Descripción de servicios*">
+              <input class="input" name="description" value="<%= product.description %>">
           </div>
           
           <div class="uploads">
@@ -69,6 +69,7 @@
                 <p class="image">
                   <% if (locals.product) { %>
                       <img src="/images/products/<%= product.image1 ? product.image1 : 'default-product-image.png' %>" alt="">
+                      <input type="hidden" name="oldImage1" value="<%= product.image1 %>">
                   <% } %>
                 </p>
                 <p>
@@ -80,6 +81,7 @@
                 <p class="image">
                 <% if (locals.product) { %>
                     <img src="/images/products/<%= product.image2 ? product.image2 : 'default-product-image.png' %>" alt="">
+                    <input type="hidden" name="oldImage2" value="<%= product.image2 %>">
                 <% } %>
                 </p>
                 <p>
@@ -91,6 +93,7 @@
                 <p class="image">
                   <% if (locals.product) { %>
                     <img src="/images/products/<%= product.image3 ? product.image3 : 'default-product-image.png' %>" alt="">
+                    <input type="hidden" name="oldImage3" value="<%= product.image3 %>">
                   <% } %>
                 </p>
                 <p> 
@@ -101,7 +104,10 @@
                 </p>
               </div>
           </div>
-          <button type="submit" value="submit" class="btn btn-primary">GUARDAR</button>
+        <p class="buttons">
+            <button type="submit" value="submit" class="btn btn-primary">Guardar cambios</button>
+        </p>
+          
       </form>
       </div>
     </div>
