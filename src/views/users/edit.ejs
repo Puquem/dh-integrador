@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/head.ejs")%> 
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/createUser.css">
+	
+	<title>METEGOL | Registro</title>
+</head>
+
+<body>
+	
+	 <!--Header-->
+	<%- include("../partials/header.ejs")%> 
+	
+	<!--Main Content-->
+
+	<div class="align">
+		<div class="form">
+            <form action="/users/<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">				
+            
+                <div class="container-title">
+                    <h1>Editar usuario</h1>
+                    <div class="right">
+                        <li><a href="/users/<%= user.id %>">&larr; Volver al perfil de usuario</a></li>
+                    </div>
+                </div>
+            
+                <div class="user-form">
+                    
+					<div class="input-fields">
+						<label>Nombre:</label>
+						<input type="text" class="input" name="name" value="<%= user.name %>">
+						<label>Apellido:</label>
+						<input type="text" class="input" name="surname" value="<%= user.surname %>">
+						<label>Correo electrónico:</label>
+						<input type="text" class="input" name="email" value="<%= user.email %>">
+                        <label>Avatar:</label>
+                        <% if (user.avatar) { %>
+                            <img src="/images/users/<%= user.avatar ? user.avatar : 'default-user-image.png' %>" alt="">
+                            <input type="hidden" name="oldAvatar" value="<%= user.avatar %>">
+                        <% } %>
+						<input type="file" name="avatar" title="Avatar">
+					</div>			
+
+				</div>
+            <div><button type="submit" class="btn btn-primary">GUARDAR CAMBIOS</button></div>
+            </form>	
+		</div>
+	</div>
+	
+	<!--Footer -->
+	<%- include("../partials/footer.ejs")%> 
+	
+ </body>
+</html>

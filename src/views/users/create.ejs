@@ -17,24 +17,33 @@
 
 	<div class="align">
 		<div class="form">
-			<h1>Crea tu usuario</h1>
+
+			<div class="container-title">
+				<h1>Crea tu usuario</h1>
+				<div class="right">
+					<li><a href="/users/login">&larr; Volver al login</a></li>
+				</div>
+			</div>
+			
+			<form action="/users" method="POST" enctype="multipart/form-data">
 				<div class="user-form">
 								
 					<div class="input-fields">
 						<label>Nombre:</label>
-						<input type="text" class="input" name="name" placeholder="Nombre*">
+						<input type="text" class="input" name="name" placeholder="Juan*">
 						<label>Apellido:</label>
-						<input type="text" class="input" name="surname" placeholder="Apellido*">
+						<input type="text" class="input" name="surname" placeholder="Perez*">
 						<label>Correo electrónico:</label>
-						<input type="text" class="input" name="email" placeholder="Email*">
+						<input type="text" class="input" name="email" placeholder="mail@mail.com*">
 						<label>Contraseña:</label>
-						<input type="password" class="input" name="password" placeholder="Contraseña*">
+						<input type="password" class="input" name="password" placeholder="La contraseña debe tener más de 8 caractéres*">
 						<label>Avatar:</label>
 						<input type="file" name="avatar" title="Avatar">
 					</div>			
 
 				</div>
-			<div><button type="submit" class="btn btn-primary">REGISTRARSE</button></div>	
+				<div><button type="submit" class="btn btn-primary">REGISTRARSE</button></div>
+			</form>	
 		</div>
 	</div>
 	

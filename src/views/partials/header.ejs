@@ -5,8 +5,19 @@
        <div class="header-right">
         <ul>
           <li><a href="/fields">LISTADO DE CANCHAS</a></li>
+          <li><a href="/users">LISTADO DE USUARIOS</a></li>
           <li><a href="/carrito" title="Carrito"><i class="fas fa-shopping-cart"></i></a></li>
+          
+          <% if(isAuthenticated) { %>
+            <li><a href="/users/profile">
+                <span class="user-badge">
+                    <img class="user-image" src="/images/avatars/<%= user.avatar %>" alt= "<%= user.name %>">
+                </span>
+            </a></li>
+          </li><a href="/users/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+        <% } else { %>
           <li><a href="/users/login" title="Log in"><i class="fas fa-user"></i></i></a></li>
+        <% } %>
         </ul>
        </div>
       <a href="#" class="hamburguer-icon">TRES RAYITAS</a>

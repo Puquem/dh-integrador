@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/head.ejs")%> 
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/userDetail.css">
+	
+	<title>METEGOL | Perfil de usuario</title>
+</head>
+<body>
+	<!--Header-->
+	<%- include("../partials/header.ejs")%> 
+		
+	<!--Main Content-->
+	<div class="align">
+		<div class="form">
+			<div class="container-title">
+                <h1><%= user.name + " " + user.surname %></h1>
+                <div class="right">
+                    <li><a href="/users">&larr; Volver al listado de usuarios</a></li>
+                </div>
+            </div>
+            
+            <div class = "container-image">
+                <section class="avatar">
+                    <img src="/images/avatars/<%= user.avatar ? user.avatar : 'default-user-image.png' %>" alt="">
+                </section>
+            </div>
+
+			<!-- Descripción de usuario -->	
+			<div class="descripcion">
+				<h3 class="titulo">Email</h3>
+                <p><%= user.email %></p>
+                    
+				<section class="buttons">
+					<form class="has-buttons" action="?_method=DELETE" method="POST" href="/users/<%= user.id %>">
+						<button class="btn btn-danger" type="submit">ELIMINAR</button>
+					</form>
+					<a class="btn btn-primary" type="submit" href="/users/<%= user.id %>/edit">EDITAR</a>
+                </section>
+    		</div> 	
+			
+		</div>
+	</div>
+				
+	<!--Footer-->
+	<%- include("../partials/footer.ejs")%> 
+</body>
+</html>

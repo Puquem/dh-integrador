@@ -72,7 +72,7 @@ a {
 }
 
 .fas fa-shopping-cart{
-  color: beige;
+  color:#edf5e1;
 }
 
 .header-right li{
@@ -88,9 +88,14 @@ a {
   margin: 10px;
 }
 
+.user-badge {
+  color:#edf5e1;
+}
+
 .header-right img {
   height: 40px;
   width: auto;
+  border-radius: 50%;
 }
 
 @media (max-width: 670px) {
@@ -138,6 +143,10 @@ a {
   padding: 10px;
   color:#063549;
   width: 100%;
+}
+
+#checkbox{
+  text-align: left;
 }
  
 /* Botón SIGNUP*/

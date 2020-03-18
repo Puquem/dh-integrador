@@ -2,7 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
-/*CSS Base*/
+/* CSS Base */
+
 * {
   box-sizing: border-box;
 }
@@ -14,8 +15,6 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 200%;
-  width: 100%;
 }
 
 ul,ol{
@@ -28,7 +27,7 @@ a {
   text-decoration: none;
 }
 
-/*Header*/
+/* Header */
 .header{
   background-color:#05386b;
   height: 70px;
@@ -53,7 +52,6 @@ a {
 }
 
 .header a{
-  /*float: left;*/
   color: black;
   text-align: center;
   padding: 12px;
@@ -98,7 +96,6 @@ a {
   border-radius: 50%;
 }
 
-
 @media (max-width: 670px) {
  
   .header-right {
@@ -110,70 +107,76 @@ a {
   }
 }
 
-/*Jugar*/
+/* Body */
 
-.jugar{
-  padding:15px;
+.align{
   text-align: center;
-  overflow: hidden;
+  margin:5%;
 }
 
-.jugar h1{
-  color: white;
-  font-style: bold;
-  text-align:center;
-  margin-top: 50px;
-  margin-bottom: 10px;
-  font-size: 10vh;
+.form{
+  display: inline-block;
+  background: rgba(245, 241, 241, 0.8);
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  width: 50%;
 }
 
-.subtitulo{
-  color: white;
-  font-size: 3vh;
+.container-title {
+  max-width: 1400px;
+  margin-bottom: 15PX ;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.jugar form{
-  float:center;
-  margin-top: 50px;
+.right li{
+  display:inline-block;
+  margin: 10px 10px;
 }
 
-.row {
-  justify-content: center;
-  padding: 10px;
-  margin-top: 50px;
-  background-color: rgba(2, 160, 94, 0.5);
+.right a {
+  color: rgb(65, 65, 65);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 15px;
 }
 
-/*Cajas*/
-
-.container{
-  width: 100%;
+/* Avatar */
+.container-image {
+  margin: 15px ;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.row #box{
-  justify-content: center;
-  padding: 10px;
-  margin-top: 50px;
-  box-sizing: border-box;
-  background-color: rgba(2, 160, 94);
+.avatar img{
+  height: 400px;
+  width: 400px;
 }
 
-.rounded{
-  width:100%;
-  height: 200px;
-  border-radius: 40%;
-  box-sizing: border-box;
+.titulo{
+  align-items: center;
+  color: rgb(65, 65, 65);
+  margin:10px 0px;
+}
+p{
+  align-items: center;
+  color: rgb(65, 65, 65);
+  margin:10px 0px;
 }
 
-.btn-primary {
-  background-color:#05386b; ;
-  border-color:#05386b; ;
-  color: white;
-  margin: 10px;
-  font-style: bold;
+.buttons{
+  max-width: 1400px;
+  margin: 30PX ;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
-/*Footer*/
+/* Footer */
 .footer{
   background-color:#05386b;
   overflow: hidden;
