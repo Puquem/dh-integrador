@@ -18,8 +18,9 @@
 	<!--Main Content-->
 	<div class="align">
 		<div class="form">
+			<h1 class="nombreCancha"> <%= product.name %></h1>
 			<div class="container-title">
-				<h1 class="nombreCancha"> <%= product.name %></h1>
+				<h3 class="nombreComplejo"> Complejo: <%= product.complexName %></h3>
 				<div class="right">
 					<li><a href="/fields/">&larr; Volver al listado</a></li>
 				</div>
@@ -63,6 +64,8 @@
 					<p><%= product.phone %></p>
 					<h3>Servicios</h3>
 					<p><%= product.description %></p>
+					<h3>Precio por hora</h3>
+					<p>ARS <%= product.price %></p>
 					
 					<section class="buttons">
 						<form class="has-buttons" action="?_method=DELETE" method="POST" href="/fields/<%= product.id %>">

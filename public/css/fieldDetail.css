@@ -118,16 +118,23 @@ a {
   width: 75%;
 }
 
+.nombreCancha{
+  max-width: 1400px;
+  color: rgb(65, 65, 65);
+  font-style: bold;
+  text-align: left;
+}
+
 .container-title {
   max-width: 1400px;
-  margin: 30PX ;
+  margin-bottom: 15PX ;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.nombreCancha{
+.nombreComplejo{
   color: rgb(65, 65, 65);
   font-style: bold;
   text-align: left;
@@ -147,7 +154,7 @@ a {
 
 .body {
   max-width: 1400px;
-  margin: 30px;
+  margin: 20px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -168,7 +175,7 @@ a {
 /* Descripcion */
 .descripcion{
   width: 50%;
-  padding-top: 2.5% ;
+  padding-top: 1%;
   align-items: left;
   color: rgb(65, 65, 65);
   text-align: left; 

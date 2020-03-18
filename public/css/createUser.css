@@ -107,7 +107,7 @@ a {
 
 .align{
   text-align: center;
-  margin:10%;
+  margin:5%;
 }
 
 .form{
@@ -132,27 +132,17 @@ a {
   display: flex;
   margin: 0 auto;
 } 
-  
-.input-fields{
-  flex-direction: column;
-  margin-right: 2%;
-  width: 100%;
-}
 
-.input-fields-sd{
-  flex-direction: column;
-  width: 100%;
-  margin-left: 2%;
+label{
+  margin: 15px 0px;
 }
- 
+   
 .input-fields input,
 .input-fields-sd input
 {
-  margin: 10px 0;
   background: transparent;
   border: 0px;
   border-bottom: 2px solid #063549;
-  padding: 10px;
   color:#063549;
   width: 100%;
 }
@@ -171,6 +161,7 @@ a {
   margin-top: 30px;
   width: 100%;
 }
+
  
 /*Footer*/
 .footer{
