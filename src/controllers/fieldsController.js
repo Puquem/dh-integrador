@@ -56,7 +56,12 @@ const controller = {
     update: (req, res) => {
         req.body.id = req.params.id;
         /* Si nos llega imagen guardamos esa, de lo contrario mantenemos la anterior */
-        req.body.image = req.file ? req.file.filename : req.body.oldImage;
+        req.body ={
+            ...req.body,
+            image1: req.files[0] ? req.files[0].filename: req.body.image1,
+            image2: req.files[1] ? req.files[1].filename: req.body.image2,
+            image3: req.files[2] ? req.files[2].filename: req.body.image3,
+        }
         productsModel.update(req.body);
 
         res.redirect('/fields/' + req.params.id);

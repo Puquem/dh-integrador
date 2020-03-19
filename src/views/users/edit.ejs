@@ -38,7 +38,7 @@
                         <label>Avatar:</label>
                         <% if (user.avatar) { %>
                             <img src="/images/users/<%= user.avatar ? user.avatar : 'default-user-image.png' %>" alt="">
-                            <input type="hidden" name="oldAvatar" value="<%= user.avatar %>">
+                            <input type="hidden" name="avatar" value="<%= user.avatar %>">
                         <% } %>
 						<input type="file" name="avatar" title="Avatar">
 					</div>			

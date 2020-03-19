@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const JsonModel = require('../models/jsonModel');
+const { validationResult } = require('express-validator'); 
 
 const usersModel = new JsonModel('users');
 const userTokensModel = new JsonModel('userTokens');
@@ -29,11 +30,22 @@ const controller = {
         res.render('users/create');
     },
     store: (req, res) => {
-        req.body.avatar = req.file ? req.file.filename : '';
+     		
+		let errors = validationResult(req);
+
+		if ( !errors.isEmpty() ) {
+			return res.render('/users/create', {
+				errors: errorsResult.array(),
+				hasErrorGetMessage,
+				oldData: req.body
+			});
+		} else {
+        
         req.body.password = bcrypt.hashSync(req.body.password, 10);
         usersModel.save(req.body);
 
-        res.redirect('/users/login');
+        return res.redirect('/users/login');
+    }
     },
     loginForm: (req, res) => {
         res.render('users/login');
@@ -60,7 +72,7 @@ const controller = {
                     message: {
                         class: 'error-message',
                         title: 'Inválido',
-                        desc: 'Los datos de acceso son inválidos.'
+                        desc: 'Credenciales inválidas'
                     }
                 });
             }
@@ -82,10 +94,6 @@ const controller = {
                 userTokensModel.destroy(token.id);
             });
         }
-
-        // La otra opción sería solo borrar la que corresponda a esta sesión.
-        // let token = userTokensModel.findByField('token', req.cookies.rememberToken);
-        // if (token) { userTokensModel.destroy(token.id) }
 
         req.session.destroy();
         res.cookie('rememberToken', null, { maxAge: -1 });
@@ -112,7 +120,7 @@ const controller = {
     update: (req, res) => {
         req.body.id = req.params.id;
         /* Si nos llega imagen guardamos esa, de lo contrario mantenemos la anterior */
-        req.body.avatar = req.file ? req.file.filename : req.body.oldAvatar;
+        req.body.avatar = req.file ? req.file.filename : req.body.avatar;
         usersModel.update(req.body);
 
         res.redirect('/users/' + req.params.id);

@@ -260,5 +260,13 @@
   "oldAvatar": "avatar-1584574358850.jpg",
   "id": "33",
   "avatar": "avatar-1584575098945.jpg"
+ },
+ {
+  "name": "Evil",
+  "surname": "Morty",
+  "email": "evil@mail.com",
+  "password": "$2b$10$gmSVsHlO13QN6RshmaBthO/qr4as4YLWsiIK53HLcUoxUDwS6pOle",
+  "avatar": "avatar-1584575613191.jpg",
+  "id": 34
  }
 ]

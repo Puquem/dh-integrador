@@ -18,6 +18,7 @@ const upload = multer({ storage });
 const usersController = require('../controllers/usersController');
 const userRoute = require('../middlewares/userRoute');
 const guestRoute = require('../middlewares/guestRoute');
+const usersValidator= require('../middlewares/usersValidator');
 
 /* GET - users list */
 router.get('/', usersController.index);
@@ -26,7 +27,7 @@ router.get('/', usersController.index);
 router.get('/create', usersController.create);
 
 /* POST - register */
-router.post('/',  upload.single('avatar'), usersController.store);
+router.post('/',  upload.single('avatar'), usersValidator, usersController.store);
 
 /* GET - login */
 router.get('/login', guestRoute, usersController.loginForm);
