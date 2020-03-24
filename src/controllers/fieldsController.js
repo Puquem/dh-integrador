@@ -7,12 +7,16 @@ const db = require('../database/models');
 const sequelize = db.sequelize;
 const Op = db.Sequelize.Op;
 
+// Express Validator - middlewares
+const { validationResult } = require('express-validator'); 
+
 const controller = {
     index: (req, res) => {
         db.Fields
         .findAll()
         .then(fields => {
-            return res.render('fields/index', { fields });
+            console.log (fields)
+            //return res.render('fields/index', { fields });
         })
         .catch(error => console.log(error));
 

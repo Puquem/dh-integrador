@@ -5,7 +5,7 @@ module.exports = (sequelize, dataTypes) => {
 			primaryKey: true,
 			autoIncrement: true
 		},
-        complexName: dataTypes.STRING,
+        complex: dataTypes.STRING,
         address: dataTypes.STRING,
         phone: dataTypes.INTEGER,
         description: dataTypes.STRING

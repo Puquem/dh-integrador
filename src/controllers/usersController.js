@@ -1,10 +1,12 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const JsonModel = require('../models/jsonModel');
-const { validationResult } = require('express-validator'); 
 
 const usersModel = new JsonModel('users');
 const userTokensModel = new JsonModel('userTokens');
+
+// Express Validator - middlewares
+const { validationResult } = require('express-validator'); 
 
 const controller = {
     index: (req, res) => {

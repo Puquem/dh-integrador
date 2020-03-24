@@ -26,9 +26,7 @@ module.exports = [
 	check('avatar')
 		.custom((value, { req }) => {
 			let acceptedExtensions = ['.jpg', '.jpeg', '.png', 'gif'];
-			if (typeof req.file == 'undefined') {
-				throw new Error('Elegí una imagen de perfil');
-			} else if (req.file.originalname) {
+			if (req.file.originalname) {
 				let fileExtension = path.extname(req.file.originalname);
 				let extensionIsOk = acceptedExtensions.includes(fileExtension);
 				if (!extensionIsOk) {
