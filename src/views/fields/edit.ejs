@@ -36,12 +36,11 @@
               <input type="text" name="address" class="input" value="<%= field.address %>">
 
               <label>Tipo de cancha: </label>
-              <select class="selector" name="fieldType">
-                <option value="<%= field.category %>"></option>
-                <option value="F5">Futbol 5</option>
-                <option value="F7">Futbol 7</option>
-                <option value="F9">Futbol 9</option>
-                <option value="F11">Futbol 11</option>
+              <select class="selector" name="category">
+                <option value="">Elegí el tipo de cancha</option>
+                <% categories.forEach(category => { %>
+                <option value="<%= category.id %>"> <%= category.category %> </option>
+                <% }) %>
               </select>
             </div>
             

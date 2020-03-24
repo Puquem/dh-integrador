@@ -1,73 +1,103 @@
-// Modelo de DB en JSON
-//const JsonModel = require('../models/jsonModel');
-//const productsModel = new JsonModel('products');
-
 // Modelo de DB en Sequelize
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const Op = db.Sequelize.Op;
 
 // Express Validator - middlewares
-const { validationResult } = require('express-validator'); 
+//const { validationResult } = require('express-validator'); 
 
 const controller = {
     index: (req, res) => {
         db.Fields
-        .findAll()
-        .then(fields => {
-            console.log (fields)
-            //return res.render('fields/index', { fields });
+            .findAll()
+            .then(field => {
+            return res.render('fields/index', { field });
         })
-        .catch(error => console.log(error));
-
-        // let products = productsModel.all();
-        // res.render('fields/index', { products });
+            .catch(() => 
+                res.render('fields/404', { 
+                    message: {
+                        class: 'error-message',
+                        title: 'Inexistente',
+                        desc: 'El producto que buscas no existe'
+                    }
+            })
+        );
     },
     show: (req, res) => {
-        let product = productsModel.find(req.params.id);
-
-        if (product) {
-            res.render('fields/detail', { product });
-        } else {
+        db.Fields
+            .findByPk (
+                req.params.id, {include: ['complex', 'category']
+            })
+            .then(field => {
+            return res.render('fields/detail', { field });
+        })
+            .catch(() => 
+                res.render('fields/404', { 
+                    message: {
+                        class: 'error-message',
+                        title: 'Inexistente',
+                        desc: 'El producto que buscas no existe'
+                    }
+            })
+        );
+    },
+    create: (req, res) => {
+        db.Categories
+        .findAll()
+        .then(categories => {
+            return res.render('fields/create', { categories });
+        })
+        .catch(() => 
+            res.render('fields/404', { 
+                message: {
+                    class: 'error-message',
+                    title: 'Inexistente',
+                    desc: 'No se ha encontrado la página'
+                }
+        })
+    );   
+    },
+    store: (req, res) => {
+        db.Fields
+        .create (req.body= { 
+        ...req.body.id, 
+        ...req.body,
+        image1: req.files[0].filename,
+        image2: req.files[1].filename,
+        image3: req.files[2].filename,
+        })
+        .then(fieldSaved => {
+            fieldSaved.addCategory(req.body.category);
+            fieldSaved.addComplex(req.body.complex);
+            return res.redirect('/fields/'+ req.params.id);
+        })
+        .catch(()=> 
+            res.render('fields/404', { 
+                message: {
+                    class: 'error-message',
+                    title: 'Inexistente',
+                    desc: 'No se pudo crear la cancha'
+                }
+        })
+    );   
+    },
+    edit: (req, res) => {      
+        db.Fields
+        .findByPk (
+            req.params.id, {include: ['complex', 'category']
+        })
+        .then(field => {
+        return res.render('fields/edit', { field });
+    })
+        .catch(() => 
             res.render('fields/404', { 
                 message: {
                     class: 'error-message',
                     title: 'Inexistente',
                     desc: 'El producto que buscas no existe'
                 }
-            });
-        }
-    },
-    create: (req, res) => {
-        res.render('fields/create');
-    },
-    store: (req, res) => {
-        req.body= { 
-        ...req.body.id, 
-        ...req.body,
-        image1: req.files[0].filename,
-        image2: req.files[1].filename,
-        image3: req.files[2].filename,
-        }
-
-        let productId = productsModel.save(req.body);
-
-        res.redirect('/fields/'+ productId);
-    },
-    edit: (req, res) => {
-        let product = productsModel.find(req.params.id);
-
-        if (product) {
-            res.render('fields/edit', { product });
-        } else {
-            res.render('fields/404', { 
-                message: {
-                    class: 'error-message',
-                    title: 'Inexistente',
-                    desc: 'El producto que buscas no existe',
-                }
-            });
-        }
+        })
+    );
     },
     update: (req, res) => {
         req.body.id = req.params.id;
@@ -78,13 +108,57 @@ const controller = {
             image2: req.files[1] ? req.files[1].filename: req.body.image2,
             image3: req.files[2] ? req.files[2].filename: req.body.image3,
         }
-        productsModel.update(req.body);
 
-        res.redirect('/fields/' + req.params.id);
+        db.Fields
+        .findByPk(req.params.id, {
+            include: ['complex', 'category']
+        })
+        .then(field => {
+            let category = field.category;
+            category.map(cat => {
+                sequelize
+                    .query(`UPDATE FROM category_product WHERE product_id = ${product.id} AND category_id = ${cat.id} and complex_id = ${complex.id}`)
+                    .then(() => console.log('Done!'))
+                    .catch(() => console.log('Ups I did it again!'));
+            });
+            field.update();
+            return res.status(200).redirect('/fields/'+ req.params.id);
+        })
+        .catch(() => 
+        res.render('fields/404', { 
+            message: {
+                class: 'error-message',
+                title: 'Inexistente',
+                desc: 'No se ha podido modificar'
+            }
+        })
+    );
     },
     destroy: (req, res) => {
-        productsModel.destroy(req.params.id);
-        res.redirect('/fields');
+        db.Fields
+			.findByPk(req.params.id, {
+				include: ['complex', 'category']
+			})
+			.then(field => {
+				let category = field.category;
+				category.map(cat => {
+					sequelize
+						.query(`DELETE FROM category_product WHERE product_id = ${product.id} AND category_id = ${cat.id}`)
+						.then(() => console.log('Done!'))
+						.catch(() => console.log('Ups I did it again!'));
+				});
+				field.destroy();
+				return res.status(200).redirect('/fields');
+			})
+			.catch(() => 
+            res.render('fields/404', { 
+                message: {
+                    class: 'error-message',
+                    title: 'Inexistente',
+                    desc: 'No se ha podido eliminar'
+                }
+        })
+    );
     },
 }
 
