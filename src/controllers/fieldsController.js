@@ -1,6 +1,12 @@
-const JsonModel = require('../models/jsonModel');
+// Modelo de DB en JSON
 
-const productsModel = new JsonModel('products');
+//const JsonModel = require('../models/jsonModel');
+//const productsModel = new JsonModel('products');
+
+// Modelo de DB en Sequelize
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const Op = db.Sequelize.Op;
 
 const controller = {
     index: (req, res) => {

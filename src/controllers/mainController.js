@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path'); // path permite unificar la ruta de manera más cómoda
+//const fs = require('fs');
+//const path = require('path'); // path permite unificar la ruta de manera más cómoda
 
 // ************ Function to Read an HTML File ************
 function readHTML (fileName) {
