@@ -1,5 +1,4 @@
 // Modelo de DB en JSON
-
 //const JsonModel = require('../models/jsonModel');
 //const productsModel = new JsonModel('products');
 
@@ -10,8 +9,15 @@ const Op = db.Sequelize.Op;
 
 const controller = {
     index: (req, res) => {
-        let products = productsModel.all();
-        res.render('fields/index', { products });
+        db.Fields
+        .findAll()
+        .then(fields => {
+            return res.render('fields/index', { fields });
+        })
+        .catch(error => console.log(error));
+
+        // let products = productsModel.all();
+        // res.render('fields/index', { products });
     },
     show: (req, res) => {
         let product = productsModel.find(req.params.id);

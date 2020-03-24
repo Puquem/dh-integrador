@@ -1,12 +1,12 @@
 module.exports = (sequelize, dataTypes) => {
-	const FieldType = sequelize.define('FieldTypes', {
+	const Category = sequelize.define('Categories', {
 		id: {
 			type: dataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
 		},
-        type: dataTypes.STRING
+        category: dataTypes.STRING
 	});
 
-	return FieldType;
+	return Category;
 }

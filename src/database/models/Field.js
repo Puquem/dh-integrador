@@ -5,14 +5,14 @@ module.exports = (sequelize, dataTypes) => {
 			primaryKey: true,
 			autoIncrement: true
 		},
-        name: dataTypes.STRING,
-        fieldType: dataTypes.INTEGER,
+		name: dataTypes.STRING,
+		description: dataTypes.STRING,
         price: dataTypes.INTEGER,
         image1: dataTypes.STRING,
         image2: dataTypes.STRING,
         image3: dataTypes.STRING,
         complex_id: dataTypes.INTEGER,
-		type_id: dataTypes.INTEGER,
+		category_id: dataTypes.INTEGER,
 	});
 
 	Field.associate = (models) => {
@@ -20,12 +20,10 @@ module.exports = (sequelize, dataTypes) => {
 			as: 'complex',
 			foreignKey: 'complex_id'
 		});
-    }
 
-    Field.associate = (models) => {
-		Field.belongsTo(models.FieldTypes, {
-			as: 'fieldType',
-			foreignKey: 'fieldType_id'
+		Field.belongsTo(models.Categories, {
+		 	as: 'category',
+			foreignKey: 'category_id'
 		});
     }
 
