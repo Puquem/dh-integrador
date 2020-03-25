@@ -8,7 +8,6 @@ module.exports = (sequelize, dataTypes) => {
         complex: dataTypes.STRING,
         address: dataTypes.STRING,
         phone: dataTypes.INTEGER,
-        description: dataTypes.STRING
 	});
         
 	return Complex;

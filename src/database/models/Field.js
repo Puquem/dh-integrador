@@ -11,19 +11,19 @@ module.exports = (sequelize, dataTypes) => {
         image1: dataTypes.STRING,
         image2: dataTypes.STRING,
         image3: dataTypes.STRING,
-        complex_id: dataTypes.INTEGER,
-		category_id: dataTypes.INTEGER,
+        complexes_id: dataTypes.INTEGER,
+		categories_id: dataTypes.INTEGER,
 	});
 
 	Field.associate = (models) => {
 		Field.belongsTo(models.Complexes, {
-			as: 'complex',
-			foreignKey: 'complex_id'
+			as: 'complexes',
+			foreignKey: 'complexes_id'
 		});
 
 		Field.belongsTo(models.Categories, {
-		 	as: 'category',
-			foreignKey: 'category_id'
+		 	as: 'categories',
+			foreignKey: 'categories_id'
 		});
     }
 

@@ -22,46 +22,42 @@
           <div class="container-title">
             <h1>Agregar cancha</h1>
             <div class="right">
-              <li><a href="/fields/">&larr; Volver al listado</a></li>
+              <li><a href="/fields">&larr; Volver al listado</a></li>
             </div>
           </div>
 
           <div class="field-form">
                   
             <div class="input-fields">
-              <label>Nombre del complejo:</label>
-              <input type="text" name="complex" class="input" placeholder="Nombre del complejo*">
               
-              <label>Dirección:</label>
-              <input type="text" name="address" class="input" placeholder="Calle, altura, barrio, CP*">
-
-              <label>Tipo de cancha: </label>
-              <select class="selector" name="category">
-                <option value="">Elegí el tipo de cancha</option>
-                <% categories.forEach(category => { %>
-                <option value="<%= category.id %>"> <%= category.category %> </option>
+              <label>Nombre del complejo:</label>
+              <select class="selector" name="complexes_id">
+                <option value="">Elegí el complejo al que pertenece la cancha</option>
+                <% complexes.forEach(complexes => { %>
+                <option value="<%= complexes.id %>"> <%= complexes.complex %> </option>
                 <% }) %>
               </select>
-            </div>
-            
-            <div class="input-fields-sd">
+
               <label>Nombre de la cancha:</label>
               <input type="text" class="input" name="name" placeholder="Nombre de la cancha*">
-               
-              <label>Teléfono:</label>
-              <input type="tel" name="phone" class="input" placeholder="12345678*">
+              
+              <label>Tipo de cancha: </label>
+              <select class="selector" name="categories_id">
+                <option value="">Elegí el tipo de cancha</option>
+                <% categories.forEach(categories => { %>
+                <option value="<%= categories.id %>"> <%= categories.category %> </option>
+                <% }) %>
+              </select>
 
               <label>Precio del alquiler por hora: </label>
               <input class="input" type="number" name="price" placeholder="0">
-            </div>
-              
-          </div>
 
-          <div class="description">
               <label>Servicios: </label>
-              <input class="input" name="description" placeholder="Descripción de servicios*">
-          </div>
-          
+              <input class="input" name="description" placeholder="Descripción de servicios*">       
+            </div>  
+
+         </div>
+
           <div class="uploads">
             <label>Elige tres imágenes: </label>
               <div class="upload-images">

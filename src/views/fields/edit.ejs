@@ -17,49 +17,43 @@
 
     <div class="align">
       <div class="form">
-        <form action="/fields/<%= field.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <form action="/fields/<%= fields.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             
-      <div class="container-title">
-				<h1>Editar cancha</h1>
-				<div class="right">
-					<li><a href="/fields/<%= field.id %>">&larr; Volver al detalle de cancha</a></li>
-				</div>
-			</div>
+          <div class="container-title">
+            <h1>Editar cancha</h1>
+            <div class="right">
+              <li><a href="/fields/<%= fields.id %>">&larr; Volver al detalle de cancha</a></li>
+            </div>
+          </div>
 			
           <div class="field-form">
                   
             <div class="input-fields">
               <label>Nombre del complejo:</label>
-              <input type="text" name="complex" class="input" value="<%= field.complex %>">
-              
-              <label>Dirección:</label>
-              <input type="text" name="address" class="input" value="<%= field.address %>">
-
-              <label>Tipo de cancha: </label>
-              <select class="selector" name="category">
-                <option value="">Elegí el tipo de cancha</option>
-                <% categories.forEach(category => { %>
-                <option value="<%= category.id %>"> <%= category.category %> </option>
+              <select class="selector" name="complexes_id">
+                <option value=""><%= fields.complexes.complex %></option>
+                <% complexes.forEach(complexes => { %>
+                <option value="<%= complexes.id %>"> <%= complexes.complex %> </option>
                 <% }) %>
               </select>
-            </div>
-            
-            <div class="input-fields-sd">
+
               <label>Nombre de la cancha:</label>
-              <input type="text" class="input" name="name" value="<%= field.name %>">
-               
-              <label>Teléfono:</label>
-              <input type="tel" name="phone" class="input" value="<%= field.phone %>">
-
+              <input type="text" class="input" name="name" value="<%= fields.name %>">
+ 
+              <label>Tipo de cancha: </label>
+              <select class="selector" name="categories_id">
+                <option value=""><%= fields.categories.category %></option>
+                <% categories.forEach(categories => { %>
+                <option value="<%= categories.id %>"> <%= categories.category %> </option>
+                <% }) %>
+              </select>
+        
               <label>Precio del alquiler por hora: </label>
-              <input class="input" type="number" name="price" value="<%= field.price %>">
-            </div>
-              
-          </div>
-
-          <div class="description">
+              <input class="input" type="number" name="price" value="<%= fields.price %>">
+                        
               <label>Servicios: </label>
-              <input class="input" name="description" value="<%= field.description %>">
+              <input class="input" name="description" value="<%= fields.description %>">
+            </div>
           </div>
           
           <div class="uploads">
@@ -67,8 +61,8 @@
               <div class="upload-images">
                 <p class="image">
                   <% if (locals.product) { %>
-                      <img src="/images/products/<%= field.image1 ? field.image1 : 'default-product-image.png' %>" alt="">
-                      <input type="hidden" name="image1" value="<%= field.image1 %>">
+                      <img src="/images/products/<%= fields.image1 ? fields.image1 : 'default-product-image.png' %>" alt="">
+                      <input type="hidden" name="image1" value="<%= fields.image1 %>">
                   <% } %>
                 </p>
                 <p>
@@ -79,8 +73,8 @@
                 </p>
                 <p class="image">
                 <% if (locals.product) { %>
-                    <img src="/images/products/<%= field.image2 ? field.image2 : 'default-product-image.png' %>" alt="">
-                    <input type="hidden" name="image2" value="<%= field.image2 %>">
+                    <img src="/images/products/<%= fields.image2 ? fields.image2 : 'default-product-image.png' %>" alt="">
+                    <input type="hidden" name="image2" value="<%= fields.image2 %>">
                 <% } %>
                 </p>
                 <p>
@@ -91,8 +85,8 @@
                 </p>
                 <p class="image">
                   <% if (locals.product) { %>
-                    <img src="/images/products/<%= field.image3 ? field.image3 : 'default-product-image.png' %>" alt="">
-                    <input type="hidden" name="image3" value="<%= field.image3 %>">
+                    <img src="/images/products/<%= fields.image3 ? fields.image3 : 'default-product-image.png' %>" alt="">
+                    <input type="hidden" name="image3" value="<%= fields.image3 %>">
                   <% } %>
                 </p>
                 <p> 
