@@ -31,9 +31,16 @@
             <div class="input-fields">
               <label>Nombre del complejo:</label>
               <select class="selector" name="complexes_id">
-                <option value=""><%= fields.complexes.complex %></option>
+                <!-- Aquí se necesita que quede seleccionado el <option> que corresponde, para poder enviar el ID del mismo -->
+                <!-- <option value=""><%= fields.complexes.complex %></option> -->
+                <!-- La idea será agregarle el atributo "selected" a aquel <option> que corresponda con el ID de este registro -->
                 <% complexes.forEach(complexes => { %>
-                <option value="<%= complexes.id %>"> <%= complexes.complex %> </option>
+                  <option 
+                    value="<%= complexes.id %>"
+                    <%= complexes.id === fields.complexes_id ? 'selected' : null %> 
+                  > 
+                      <%= complexes.complex %> 
+                  </option>
                 <% }) %>
               </select>
 
@@ -42,9 +49,15 @@
  
               <label>Tipo de cancha: </label>
               <select class="selector" name="categories_id">
-                <option value=""><%= fields.categories.category %></option>
+                <!-- Hay que hacer lo mismo que con el select "complexes_id" -->
+                <!-- <option value=""><%= fields.categories.category %></option> -->
                 <% categories.forEach(categories => { %>
-                <option value="<%= categories.id %>"> <%= categories.category %> </option>
+                  <option 
+                    value="<%= categories.id %>"
+                    <%= categories.id === fields.categories_id ? 'selected' : null %>
+                  > 
+                    <%= categories.category %> 
+                  </option>
                 <% }) %>
               </select>
         

@@ -32,9 +32,9 @@
 				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="500">
 					
 					<ul class="carousel-indicators">
-						<li data-target="#demo" data-slide-to="0" class="active"></li>
-						<li data-target="#demo" data-slide-to="1"></li>
-						<li data-target="#demo" data-slide-to="2"></li>
+						<li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleSlidesOnly" data-slide-to="1"></li>
+						<li data-target="#carouselExampleSlidesOnly" data-slide-to="2"></li>
 					</ul>
 					<div class="carousel-inner">
 					  <div class="carousel-item active">
@@ -47,10 +47,10 @@
 						<img src="/images/fields/<%= fields.image3 ? fields.image3 : 'default-product-image.png' %>" class="d-block w-100" alt="...">
 					  </div>
 					</div>
-					<a class="carousel-control-prev"data-slide="prev">
+					<a class="carousel-control-prev" data-slide="prev" data-target="#carouselExampleSlidesOnly">
 						<span class="carousel-control-prev-icon"></span>
 					  </a>
-					  <a class="carousel-control-next" data-slide="next">
+					  <a class="carousel-control-next" data-slide="next" data-target="#carouselExampleSlidesOnly">
 						<span class="carousel-control-next-icon"></span>
 					</a>
 				</div>
@@ -77,6 +77,13 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Carousel Settings -->
+	<script>
+		$('.carousel').carousel({
+			interval: 3000 // 3seg de pausa entre imagen e imagen
+		});
+	</script>
 				
 	<!--Footer-->
 	<%- include("../partials/footer.ejs")%> 
