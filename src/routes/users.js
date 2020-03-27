@@ -24,10 +24,10 @@ const usersValidator= require('../middlewares/usersValidator');
 router.get('/', usersController.index);
 
 /* GET - register */
-router.get('/create', usersController.create);
+router.get('/create', guestRoute, usersController.create);
 
 /* POST - register */
-router.post('/',  upload.single('avatar'), usersValidator, usersController.store);
+router.post('/', upload.single('avatar'), usersValidator, usersController.store);
 
 /* GET - login */
 router.get('/login', guestRoute, usersController.loginForm);

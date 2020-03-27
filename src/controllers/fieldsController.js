@@ -11,23 +11,18 @@ const controller = {
         db.Fields
             .findAll()
             .then(fields => {
-                return res.render('fields/index', { fields });
+                if(fields) {
+                    return res.render('fields/index', { fields });
+                } else {
+                    return res.status(404).render('fields/404', {
+                        message: {
+                            class: 'error-message',
+                            title: 'Inexistente',
+                            desc: 'El producto que buscas no existe'
+                        }
+                    });
+                }
             })
-            /* $JAVI's-COMMENT: 
-                aquí el catch no te va a funcionar como lo esperas, 
-                pues solo se ingresa al catch cuando la consulta no funciona. 
-                Y este caso particular la consulta SIEMPRE va a funcionar.
-                Lo lógico sería dentro del THEN hacer la lógica (if/else)
-            */ 
-            .catch(() =>
-                res.render('fields/404', { 
-                    message: {
-                        class: 'error-message',
-                        title: 'Inexistente',
-                        desc: 'El producto que buscas no existe'
-                    }
-            })
-        );
     },
     show: (req, res) => {
         db.Fields
@@ -53,21 +48,6 @@ const controller = {
                     });
                 }
             })
-            /* $JAVI's-COMMENT:
-                aquí el catch no te va a funcionar como lo esperas,
-                pues solo se ingresa al catch cuando la consulta no funciona.
-                Y este caso particular la consulta SIEMPRE va a funcionar.
-                Lo lógico sería dentro del THEN hacer la lógica (if/else)
-            */
-            .catch(() => {
-                res.render('fields/404', { 
-                    message: {
-                        class: 'error-message',
-                        title: 'Inexistente',
-                        desc: 'El producto que buscas no existe'
-                    }
-                });
-            });
     },
     create: (req, res) => {
 		db.Complexes.findAll()
@@ -94,9 +74,6 @@ const controller = {
         })
         );
     },
-    
-    //NO FUNCIONA EL REDIRECCIONAMIENTO, DEBERÍA REDIRECCIONAR AL DETALLE DEL PROD.
-    //PERO REDIRECCIONA AL LISTADO DE PRODUCTOS. 
     store: (req, res) => {
         db.Fields.create ({
             complexes_id: req.body.complexes_id,
@@ -115,7 +92,6 @@ const controller = {
                 Por lo tanto al él le podés pedir su ID. Que es lo que necesitas para 
                 redirigir al detalle del mismo, dado a que la URL es: /fields/:id
             */
-            // return res.redirect('fields')
             return res.redirect(`/fields/${fieldCreated.id}`);
         })
         .catch(()=> 
@@ -183,8 +159,6 @@ const controller = {
     //     })
     //     );
     },
-
-    //NO FUNCIONA EL REDIRECCIONAMIENTO Y NO HACE EL UPDATE 
     update: (req, res) => {
         /*
             $JAVI's-COMMENT:
@@ -213,13 +187,13 @@ const controller = {
         })
         .catch(() => {
             return res.send('Catch');
-            res.render('fields/404', { 
-                message: {
-                    class: 'error-message',
-                    title: 'Inexistente',
-                    desc: 'No se ha podido modificar'
-                }
-            })
+            // res.render('fields/404', { 
+            //     message: {
+            //         class: 'error-message',
+            //         title: 'Inexistente',
+            //         desc: 'No se ha podido modificar'
+            //     }
+            // })
         });
     },
     destroy: (req, res) => {

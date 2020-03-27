@@ -1,76 +1,89 @@
+// Login Middlewares
 const bcrypt = require('bcrypt');
-const crypto = require('crypto');
-const JsonModel = require('../models/jsonModel');
 
-const usersModel = new JsonModel('users');
-const userTokensModel = new JsonModel('userTokens');
+// Modelo de DB en Sequelize
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const Op = db.Sequelize.Op;
 
-// Express Validator - middlewares
-const { validationResult } = require('express-validator'); 
+// Express Validator - Middlewares
+//const { validationResult } = require('express-validator'); 
 
 const controller = {
     index: (req, res) => {
-        let users = usersModel.all();
-        res.render('users/index', { users });
+        db.Users.findAll()
+        .then (users => {
+            if(users) {
+                return res.render('users/index', { users });
+            } else {
+                return res.status(404).render('users/404', { 
+                    message: {
+                        class: 'error-message',
+                        title: 'Inexistente',
+                        desc: 'El usuario que buscas no existe'
+                    }
+                });
+            }
+        })
     },
     show: (req, res) => {
-        let user = usersModel.find(req.params.id);
-
-        if (user) {
-            res.render('users/detail', { user });
-        } else {
-            res.render('users/404', { 
-                message: {
-                    class: 'error-message',
-                    title: 'Inexistente',
-                    desc: 'El usuario que buscas no existe'
-                }
-            });
-        }
+        db.Users.findByPk(req.params.id)
+        .then( user => {
+            if (user) {
+                res.render('users/detail', { user:user });
+            } else {
+                res.render('users/404', { 
+                    message: {
+                        class: 'error-message',
+                        title: 'Inexistente',
+                        desc: 'El usuario que buscas no existe'
+                    }
+                });
+            }
+        })
     },
     create: (req, res) => {
         res.render('users/create');
     },
     store: (req, res) => {
-     		
-		let errors = validationResult(req);
-
-		if ( !errors.isEmpty() ) {
-			return res.render('/users/create', {
-				errors: errorsResult.array(),
-				hasErrorGetMessage,
-				oldData: req.body
-			});
-		} else {
-        
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
-        usersModel.save(req.body);
-
-        return res.redirect('/users/login');
-    }
-    },
+     	//let errors = validationResult(req);
+        db.Users.create ({
+            name: req.body.name,
+            surname: req.body.surname,
+            email: req.body.email,
+            password: req.body.password = bcrypt.hashSync(req.body.password, 10),
+            avatar: req.file.filename
+        })
+        .then(userCreated => {
+            return res.redirect('/users/login');
+        })
+    }, 
     loginForm: (req, res) => {
         res.render('users/login');
     },
     login: (req, res) => {
-        let user = usersModel.findByField('email', req.body.email);
-        if (user) {
-            if (bcrypt.compareSync(req.body.password, user.password)) {
-                delete user.password;
-                req.session.user = user;
+        db.Users.findOne({
+            //Buscar usuario por ID
+            where: { email : req.body.email}})
+            // Si encuentra al usuario
+        .then (oneUser => {
+        if (oneUser) {
+            // Compara las contraseñas
+            if (bcrypt.compareSync(req.body.password, oneUser.password)) {
+                //Elimina la contraseña porque no es un dato que pueda guardar
+                delete oneUser.password;
+                //Guarda el usuario en Session
+                req.session.user = oneUser;
                 res.locals.user = req.session.user;
-                                
+                res.locals.isAuthenticated = true;
+                //Setea la cookie           
                 if (req.body.remember) {
-                    // https://stackoverflow.com/questions/8855687/secure-random-token-in-node-js
-                    const token = crypto.randomBytes(64).toString('base64');
-                    res.cookie('rememberToken', token, { maxAge: 1000 * 60 * 60 * 24 * 90 });
-                    userTokensModel.save({ userId: user.id, token});
+                    res.cookie('userIdCookie', oneUser.id, { maxAge: 60000 * 60 });
                 }
-
-                res.redirect('/users/profile');
-
+                //Redirige el usuario al perfil
+                return res.redirect('/users/profile');
             } else {
-                res.render('users/404', { 
+                return res.render('users/404', { 
                     message: {
                         class: 'error-message',
                         title: 'Inválido',
@@ -78,58 +91,89 @@ const controller = {
                     }
                 });
             }
+        //Si no encuentra el usuario
         } else {
-            res.render('users/404', { 
+            return res.render('users/404', { 
                 message: {
                     class: 'error-message',
                     title: 'Inexistente',
-                    desc: 'El usuario no existe'
+                    desc: 'No hay usuarios registrados con ese email'
                 }
             });
-        }       
+        }
+    })     
     },
     logout: (req, res) => {
-        // Al hacer logout borramos todos las cookies activas
-        let tokens = userTokensModel.findAllByField('userId', req.session.user.id);
-        if (tokens) {
-            tokens.forEach(token => {
-                userTokensModel.destroy(token.id);
-            });
-        }
-
+        // Destruyela session
         req.session.destroy();
-        res.cookie('rememberToken', null, { maxAge: -1 });
+        // Destruye la cookie
+        res.cookie('remember', { maxAge: -1 });
         res.redirect('/');
     },
     profile: (req, res) => {
-        let user = usersModel.find(req.session.user.id);
-        res.render('users/detail', { user });
+        db.Users.findByPk(req.session.user.id)
+        .then(user => {
+            return res.render('users/detail', { user:user });
+        })   
     },
     edit: (req, res) => {
-        let user = usersModel.find(req.params.id);
-        if (user) {
-            res.render('users/edit', { user });
-        } else {
-            res.render('users/404', { 
+        db.Users.findByPk(req.params.id)
+        .then( users => {
+            if (users) {
+                return res.render('users/edit', { users });
+            } else {
+                return res.status(404).render('users/404', { 
+                    message: {
+                        class: 'error-message',
+                        title: 'Inexistente',
+                        desc: 'El usuario que buscas no existe'
+                    }
+                });
+            }
+        })
+    },
+    update: (req, res) => {
+        db.Users.update ({
+            name: req.body.name,
+            surname: req.body.surname,
+            email: req.body.email,
+            avatar: req.body.avatar = req.file ? req.file.filename : req.body.avatar
+        }, { where: {
+            id: req.params.id
+        }
+        })
+        .then(userUpdated => {
+            return res.redirect('/users/' + req.params.id)
+        })
+        .catch(() => {
+            return res.send('Catch');
+            // res.render('fields/404', { 
+            //     message: {
+            //         class: 'error-message',
+            //         title: 'Inexistente',
+            //         desc: 'No se ha podido modificar'
+            //     }
+            // })
+        });
+    },
+    destroy: (req, res) => {
+        db.Users.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        .then((updated) => {
+        return res.status(200).redirect('/users');
+        })
+		.catch(() => 
+            res.render('fields/404', { 
                 message: {
                     class: 'error-message',
                     title: 'Inexistente',
-                    desc: 'El usuario que buscas no existe'
+                    desc: 'No se ha podido eliminar'
                 }
-            });
-        }
-    },
-    update: (req, res) => {
-        req.body.id = req.params.id;
-        /* Si nos llega imagen guardamos esa, de lo contrario mantenemos la anterior */
-        req.body.avatar = req.file ? req.file.filename : req.body.avatar;
-        usersModel.update(req.body);
-
-        res.redirect('/users/' + req.params.id);
-    },
-    destroy: (req, res) => {
-        usersModel.destroy(req.params.id);
-        res.redirect('/users');
+        })
+    );
     },
 }
 

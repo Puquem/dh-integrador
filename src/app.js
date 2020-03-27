@@ -6,7 +6,8 @@ const logger = require('morgan');
 const path = require('path');
 const session = require ("express-session");
 const methodOverride = require('method-override');
-const auth = require('./middlewares/auth');
+
+const remember = require('./middlewares/remember');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -18,11 +19,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(session({
-  secret: 'Aguate RIVER!!!',
+  secret: 'Metegol',
   resave: false,
   saveUninitialized: true
 }));
-app.use(auth);
+app.use(remember);
 
 // Override del  with POST having ?_method=DELETE
 app.use(methodOverride('_method'));

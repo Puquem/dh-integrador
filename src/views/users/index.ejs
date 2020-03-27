@@ -3,7 +3,7 @@
 <head>
 	<%- include("../partials/head.ejs")%> 
 	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/css/fieldList.css">
+	<link rel="stylesheet" href="/css/list.css">
 	
 	<title>METEGOL | Listado de usuarios</title>
 </head>
@@ -24,19 +24,19 @@
 			</div>
 			<div class="row">
 				
-				<% users.forEach( user => { %>
+				<% users.forEach( users => { %>
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<a href="/users/<%= user.id %>"><img class="card-img-top" id="image" src="/images/avatars/<%= user.avatar ? user.avatar:'default-user-image.png' %>"></a>
+							<a href="/users/<%= users.id %>"><img class="card-img-top" id="image" src="/images/avatars/<%= users.avatar ? users.avatar:'default-user-image.png' %>"></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a href="/users/<%= user.id %>"><%= user.name + " " + user.surname%></a>
+									<a href="/users/<%= users.id %>"><%= users.getFullName() %></a>
 								</h4>
-								<p class="card-text"><%= user.email %></p>
+								<p class="card-text"><%= users.email %></p>
 							</div>
 							<div class="card-footer">
-								<a class="btn btn-primary" type="submit" href="/users/<%= user.id %>">VER DETALLE</a>
+								<a class="btn btn-primary" type="submit" href="/users/<%= users.id %>">VER DETALLE</a>
 							</div>
 						</div>
 					</div>

@@ -17,12 +17,12 @@
 
 	<div class="align">
 		<div class="form">
-            <form action="/users/<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">				
+            <form action="/users/<%= users.id %>?_method=PUT" method="POST" enctype="multipart/form-data">				
             
                 <div class="container-title">
                     <h1>Editar usuario</h1>
                     <div class="right">
-                        <li><a href="/users/<%= user.id %>">&larr; Volver al perfil de usuario</a></li>
+                        <li><a href="/users/<%= users.id %>">&larr; Volver al perfil de usuario</a></li>
                     </div>
                 </div>
             
@@ -30,15 +30,15 @@
                     
 					<div class="input-fields">
 						<label>Nombre:</label>
-						<input type="text" class="input" name="name" value="<%= user.name %>">
+						<input type="text" class="input" name="name" value="<%= users.name %>">
 						<label>Apellido:</label>
-						<input type="text" class="input" name="surname" value="<%= user.surname %>">
+						<input type="text" class="input" name="surname" value="<%= users.surname %>">
 						<label>Correo electrónico:</label>
-						<input type="text" class="input" name="email" value="<%= user.email %>">
+						<input type="text" class="input" name="email" value="<%= users.email %>">
                         <label>Avatar:</label>
-                        <% if (user.avatar) { %>
-                            <img src="/images/users/<%= user.avatar ? user.avatar : 'default-user-image.png' %>" alt="">
-                            <input type="hidden" name="avatar" value="<%= user.avatar %>">
+                        <% if (users.avatar) { %>
+                            <img src="/images/users/<%= users.avatar ? users.avatar : 'default-user-image.png' %>" alt="">
+                            <input type="hidden" name="avatar" value="<%= users.avatar %>">
                         <% } %>
 						<input type="file" name="avatar" title="Avatar">
 					</div>			
