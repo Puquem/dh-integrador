@@ -54,7 +54,7 @@ formInputs.forEach(oneInput => {
     }
 
     //Validando el campo de imagen
-	if (oneInput.name === 'image1', 'image2', 'image3') {
+	if (oneInput.name === 'image1' || oneInput.name === 'image2' || oneInput.name === 'image3') {
 
 		oneInput.addEventListener('change', function () {
 			// Array de extensiones permitidas
