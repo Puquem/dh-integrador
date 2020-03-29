@@ -23,17 +23,19 @@ module.exports = [
 		.isLength({ min: 10 }).withMessage('Escribe una descripción completa'),
 	
 	// Validando imágenes
+	//REVISAR!
 	check('image1', 'image2', 'image3')
-		.notEmpty().withMessage('Ingresa imágenes de la cancha o del complejo').bail()
 		.custom((value, { req }) => {
-			let acceptedExtensions = ['.jpg', '.jpeg', '.png', 'gif'];
-			if (req.file.originalname) {
-				let fileExtension = path.extname(req.file.originalname);
+			let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif' ];
+			if (typeof req.files == 'undefined') {
+				throw new Error('Elige una imagen descriptiva de la cancha o del complejo');
+			} else if (req.files.filename) {
+				let fileExtension = path.extname(req.files.filename);
 				let extensionIsOk = acceptedExtensions.includes(fileExtension);
 				if (!extensionIsOk) {
 					throw new Error('Los formatos válidos son JPG, JPEG, PNG y GIF');
 				}
 			}
 			return true;
-		})
+		}),
 ];

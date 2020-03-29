@@ -74,7 +74,7 @@
               <div class="upload-images">
                 <p class="image">
                   <% if (locals.product) { %>
-                      <img src="/images/products/<%= fields.image1 ? fields.image1 : 'default-product-image.png' %>" alt="">
+                      <img src="/images/products/<%= fields.image1 %>" alt="">
                       <input type="hidden" name="image1" value="<%= fields.image1 %>">
                   <% } %>
                 </p>
@@ -86,7 +86,7 @@
                 </p>
                 <p class="image">
                 <% if (locals.product) { %>
-                    <img src="/images/products/<%= fields.image2 ? fields.image2 : 'default-product-image.png' %>" alt="">
+                    <img src="/images/products/<%= fields.image2 %>" alt="">
                     <input type="hidden" name="image2" value="<%= fields.image2 %>">
                 <% } %>
                 </p>
@@ -98,7 +98,7 @@
                 </p>
                 <p class="image">
                   <% if (locals.product) { %>
-                    <img src="/images/products/<%= fields.image3 ? fields.image3 : 'default-product-image.png' %>" alt="">
+                    <img src="/images/products/<%= fields.image3 %>" alt="">
                     <input type="hidden" name="image3" value="<%= fields.image3 %>">
                   <% } %>
                 </p>

@@ -28,7 +28,7 @@
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<a href="/users/<%= users.id %>"><img class="card-img-top" id="image" src="/images/avatars/<%= users.avatar ? users.avatar:'default-user-image.png' %>"></a>
+							<a href="/users/<%= users.id %>"><img class="card-img-top" id="image" src="/images/avatars/<%= users.avatar %>"></a>
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="/users/<%= users.id %>"><%= users.getFullName() %></a>

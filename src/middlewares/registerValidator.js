@@ -20,15 +20,16 @@ module.exports = [
 	// Validando password
 	check('password')
 		.notEmpty().withMessage('La contraseña es obligatoria').bail()
-		.isLength({ min: 8 }).withMessage('La contraseña debe tener más de 8 caracteres'),
+		.isLength({ min: 6 }).withMessage('La contraseña debe tener al menos de 6 caracteres'),
 	
 	// Validando avatar
 	check('avatar')
-		.notEmpty().withMessage('El avatar es obligatorio').bail()
 		.custom((value, { req }) => {
-			let acceptedExtensions = ['.jpg', '.jpeg', '.png', 'gif'];
-			if (req.file.originalname) {
-				let fileExtension = path.extname(req.file.originalname);
+			let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif' ];
+			if (typeof req.file == 'undefined') {
+				throw new Error('Elige una imagen de perfil');
+			} else if (req.file.filename) {
+				let fileExtension = path.extname(req.file.filename);
 				let extensionIsOk = acceptedExtensions.includes(fileExtension);
 				if (!extensionIsOk) {
 					throw new Error('Los formatos válidos son JPG, JPEG, PNG y GIF');

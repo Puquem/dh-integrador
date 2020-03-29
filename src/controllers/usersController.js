@@ -66,13 +66,13 @@ const controller = {
             // Si NO encuentra al usuario, lo creo
         .then (userCreated => {
             if (!userCreated) {
-                db.Users
-						.create(userCreated)
-						.then(userCreated => {
+                //db.Users
+						//.create(userCreated)
+						//.then(userCreated => {
                         return res.redirect('/users/login'); 
-                        })
+                        
                 // Si encuentro a un usuario con el mismo mail
-             } else {
+            } else {
                     return res.render('users/404', { 
                         message: {
                             class: 'error-message',
@@ -82,6 +82,7 @@ const controller = {
                     });
                 }
             })
+        
             //Si HAY errores
         } else {
 			res.render('users/create', {errors: errors.errors})

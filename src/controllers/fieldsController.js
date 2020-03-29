@@ -87,9 +87,9 @@ const controller = {
             categories_id: req.body.categories_id,
             price: req.body.price,
             description: req.body.description,
-            image1: req.files[0].filename ? req.file[0].filename : '', 
-            image2: req.files[1].filename ? req.file[1].filename : '',
-            image3: req.files[2].filename ? req.file[2].filename : '' 
+            image1: req.files[0].filename,
+            image2: req.files[1].filename,
+            image3: req.files[2].filename
         })
         .then(fieldCreated => {
             /*

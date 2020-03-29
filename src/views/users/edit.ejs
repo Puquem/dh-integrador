@@ -37,7 +37,7 @@
 						<input type="text" class="input" name="email" value="<%= users.email %>">
                         <label>Avatar:</label>
                         <% if (users.avatar) { %>
-                            <img src="/images/users/<%= users.avatar ? users.avatar : 'default-user-image.png' %>" alt="">
+                            <img src="/images/users/<%= users.avatar %>" alt="">
                             <input type="hidden" name="avatar" value="<%= users.avatar %>">
                         <% } %>
 						<input type="file" name="avatar" title="Avatar">
