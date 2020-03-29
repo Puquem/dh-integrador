@@ -10,13 +10,13 @@ const remember = (req, res, next) => {
     if (req.session.user) {
         res.locals.isAuthenticated = true;
         res.locals.user = req.session.user;
-
+    // Guarda la info del usuario en la cookie
     } else if (req.cookies.userIdCookie) {
         let oneUser = db.Users.findByPk(req.cookies.userIdCookie);
         req.session.user = oneUser
         }
 
-     // Si es inválido, borramos la cookie
+     // Si es inválido, se borra la cookie
      res.cookie('userIdCookie', null, { maxAge: -1 });
         
     next();

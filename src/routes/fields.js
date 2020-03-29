@@ -17,6 +17,9 @@ const upload = multer({ storage });
 // ************ Controller Require ************
 const fieldsController = require('../controllers/fieldsController.js');
 
+// ************ Middlewares ************
+const fieldsValidator= require('../middlewares/fieldsValidator');
+
 /* GET - Fields List*/
 router.get('/', fieldsController.index);
 
@@ -24,7 +27,7 @@ router.get('/', fieldsController.index);
 router.get('/create', fieldsController.create);
 
 /* POST - Create Field Form*/
-router.post('/', upload.any(), fieldsController.store);
+router.post('/', upload.any(), fieldsValidator, fieldsController.store);
 
 /* GET - Field Detail*/
 router.get('/:id', fieldsController.show);

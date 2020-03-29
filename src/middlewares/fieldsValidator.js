@@ -2,38 +2,29 @@ const path = require('path');
 const {check} = require ("express-validator");
 
 module.exports = [
-	// Validando el complejo
-	check('complex')
-		.notEmpty().withMessage('El nombre del complejo es obligatorio').bail()
-		.isLength({ min: 2 }).withMessage('Escribí un nombre válido'),
+	// // Validando el complejo
+	// check('complex')
+	// 	.notEmpty().withMessage('El nombre del complejo es obligatorio').bail()
+	// 	.isLength({ min: 2 }).withMessage('Escribí un nombre válido'),
 
-	// Validando dirección
-	check('address')
-		.notEmpty().withMessage('La dirección es obligatorio').bail()
-		.isLength({ min: 10}).withMessage('Escribí una dirección válida y completa'),
-
-	// Validando cancha
+	// Validando nombre de la cancha
     check('name')
         .notEmpty().withMessage('El nombre de la cancha es obligatorio').bail()
-        .isLength({ min: 2 }).withMessage('Escribí un nombre válido'),
+        .isLength({ min: 2 }).withMessage('Escribe un nombre válido'),
 
-    // Validando teléfono
-    check('phone')   
-		.notEmpty().withMessage('El teléfono es obligatorio').bail()
-        .isInt({ min: 8 }).withMessage('Escribí un número de télefono válido sin espacios ni guiones'),
-        
-        // Validando teléfono
+    // Validando precio
     check('price')   
-        .notEmpty().withMessage('Ingresa un precio').bail()
-        .isInt({ min: 1 }).withMessage('Escribí un precio válido'),
+        .notEmpty().withMessage('El precio es obligatorio').bail()
+        .isInt({ min: 1 }).withMessage('Escribe un precio válido'),
 
-	// Validando password
+	// Validando descripción
 	check('description')
-		.notEmpty().withMessage('Escribí una descripción de la cancha').bail()
-		.isLength({ min: 10 }).withMessage('Escribí una descripción completa'),
+		.notEmpty().withMessage('La descripción es obligatoria').bail()
+		.isLength({ min: 10 }).withMessage('Escribe una descripción completa'),
 	
-	// Validando avatar
+	// Validando imágenes
 	check('image1', 'image2', 'image3')
+		.notEmpty().withMessage('Ingresa imágenes de la cancha o del complejo').bail()
 		.custom((value, { req }) => {
 			let acceptedExtensions = ['.jpg', '.jpeg', '.png', 'gif'];
 			if (req.file.originalname) {

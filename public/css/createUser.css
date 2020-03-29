@@ -97,7 +97,6 @@ a {
   border-radius: 50%;
 }
 
-
 @media (max-width: 670px) {
  
   .header-right {
@@ -117,22 +116,29 @@ a {
 }
 
 .form{
+  max-width: 1400px;
   display: inline-block;
   text-align: left;
   background: rgba(245, 241, 241, 0.8);
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  max-width: 50%;
+  width: 50%;
 }
 
 .container-title {
   max-width: 1400px;
-  margin-bottom: 15PX ;
+  margin-bottom: 15px ;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.form h1{
+  color: rgb(65, 65, 65);
+  text-align: left;
+  font-size: 3vh;
 }
 
 .right li{
@@ -147,30 +153,51 @@ a {
   font-size: 15px;
 }
 
-.form h1{
-  color: rgb(65, 65, 65);
-  text-align: left;
-  font-style: bold;
-  margin-bottom: 30px;
-  font-size: 3vh;
+.errorsList{
+  margin-bottom: 15px;
+  background-color: pink;
+}
+
+#back{
+  font-size: 1.3vh;
+  color: #EE1945;
+  margin-left: 5px;
 }
 
 .user-form{
-  display: flex;
   margin: 0 auto;
+  width: 100%;
 } 
 
 label{
-  margin: 15px 0px;
+  margin: 5px 0px;
 }
    
-.input-fields input,
-.input-fields-sd input
-{
+.input {
   background: transparent;
   border: 0px;
   border-bottom: 2px solid #063549;
   color:#063549;
+  height: 28px;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+
+.error{
+  border-bottom: solid 2px #EE1945;
+  color: #EE1945;
+}
+
+/* Selector de hermanos*/
+/* Cuando un campo tiene la clase error, entonces el hermano con clase feedback queda con display block*/
+.error ~ .feedback{
+  display:inline-block;
+}
+
+.feedback {
+  color: #EE1945;
+  font-size: 1.3vh;
   width: 100%;
 }
 
@@ -185,10 +212,9 @@ label{
   text-transform: uppercase;
   float: center;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 10px;
   width: 100%;
 }
-
  
 /*Footer*/
 .footer{

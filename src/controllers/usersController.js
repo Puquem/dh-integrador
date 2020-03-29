@@ -7,7 +7,7 @@ const sequelize = db.sequelize;
 const Op = db.Sequelize.Op;
 
 // Express Validator - Middlewares
-//const { validationResult } = require('express-validator'); 
+const { validationResult } = require('express-validator'); 
 
 const controller = {
     index: (req, res) => {
@@ -46,7 +46,13 @@ const controller = {
         res.render('users/create');
     },
     store: (req, res) => {
-     	//let errors = validationResult(req);
+
+        //Validaciones del Back
+        let errors = (validationResult(req));
+
+        //Si NO hay errores
+        if (errors.isEmpty()) {
+
         db.Users.create ({
             name: req.body.name,
             surname: req.body.surname,
@@ -54,14 +60,44 @@ const controller = {
             password: req.body.password = bcrypt.hashSync(req.body.password, 10),
             avatar: req.file.filename
         })
-        .then(userCreated => {
-            return res.redirect('/users/login');
-        })
+        db.Users.findOne({
+            //Buscar usuario por email
+            where: { email : req.body.email}})
+            // Si NO encuentra al usuario, lo creo
+        .then (userCreated => {
+            if (!userCreated) {
+                db.Users
+						.create(userCreated)
+						.then(userCreated => {
+                        return res.redirect('/users/login'); 
+                        })
+                // Si encuentro a un usuario con el mismo mail
+             } else {
+                    return res.render('users/404', { 
+                        message: {
+                            class: 'error-message',
+                            title: 'Inválido',
+                            desc: 'Ya existe un usuario con ese email'
+                        }
+                    });
+                }
+            })
+            //Si HAY errores
+        } else {
+			res.render('users/create', {errors: errors.errors})
+		}
     }, 
     loginForm: (req, res) => {
         res.render('users/login');
     },
     login: (req, res) => {
+
+        //Validaciones del Back
+        let errors = (validationResult(req));
+
+        //Si NO hay errores
+        if (errors.isEmpty()) {
+
         db.Users.findOne({
             //Buscar usuario por ID
             where: { email : req.body.email}})
@@ -101,10 +137,14 @@ const controller = {
                 }
             });
         }
-    })     
+    }) 
+    //Si HAY errores
+        } else {
+            res.render('users/login', {errors: errors.errors})
+        }    
     },
     logout: (req, res) => {
-        // Destruyela session
+        // Destruye la session
         req.session.destroy();
         // Destruye la cookie
         res.cookie('remember', { maxAge: -1 });
@@ -147,13 +187,6 @@ const controller = {
         })
         .catch(() => {
             return res.send('Catch');
-            // res.render('fields/404', { 
-            //     message: {
-            //         class: 'error-message',
-            //         title: 'Inexistente',
-            //         desc: 'No se ha podido modificar'
-            //     }
-            // })
         });
     },
     destroy: (req, res) => {

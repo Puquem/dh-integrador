@@ -16,9 +16,12 @@ const upload = multer({ storage });
 
 // ************ Controller Require ************
 const usersController = require('../controllers/usersController');
+
+// ************ Middlewares ************
 const userRoute = require('../middlewares/userRoute');
 const guestRoute = require('../middlewares/guestRoute');
-const usersValidator= require('../middlewares/usersValidator');
+const registerValidator= require('../middlewares/registerValidator');
+const loginValidator= require('../middlewares/loginValidator');
 
 /* GET - users list */
 router.get('/', usersController.index);
@@ -27,13 +30,13 @@ router.get('/', usersController.index);
 router.get('/create', guestRoute, usersController.create);
 
 /* POST - register */
-router.post('/', upload.single('avatar'), usersValidator, usersController.store);
+router.post('/', upload.single('avatar'), registerValidator, usersController.store);
 
 /* GET - login */
 router.get('/login', guestRoute, usersController.loginForm);
 
 /* POST - login */
-router.post('/login', usersController.login);
+router.post('/login', loginValidator, usersController.login);
 
 // /* GET - profile */
 router.get('/profile', userRoute, usersController.profile);

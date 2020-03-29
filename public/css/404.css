@@ -110,14 +110,20 @@ a {
 
 /* Body */
 
+.align{
+  text-align: center;
+  margin:10%;
+}
+
 .container{
+  max-width: 1400px;
   display: inline-block;
+  text-align: left;
   background: rgba(245, 241, 241, 0.8);
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  width:50%;
-  margin:5%;
+  width: 50%;
 }
 
 h1{
@@ -138,6 +144,21 @@ p{
   align-items: left;
   color: rgb(65, 65, 65);
   margin:10px 0px;
+}
+
+.btn {
+  background-color:#05386b; ;
+  border-color:#05386b; ;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  float: center;
+  cursor: pointer;
+  margin-top:10px;
+  width: 100%;
 }
 
 /* Footer */

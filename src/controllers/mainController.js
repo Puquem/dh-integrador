@@ -7,7 +7,7 @@ function readHTML (fileName) {
 	return htmlFile;
 }
 
-// controller es la ruta que se exporta
+// Controller es la ruta que se exporta
 const controller = {
 	root: (req, res) => {
 		res.render("index");

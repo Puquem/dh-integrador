@@ -4,8 +4,12 @@
       <a href="/" class="logo"><img src="/images/logo.png" alt="logo de metegol"></a>
        <div class="header-right">
         <ul>
-          <li><a href="/fields">LISTADO DE CANCHAS</a></li>
+          <li><a href="/fields">CANCHAS</a></li>
+
+          <% if(isAuthenticated) { %>
           <li><a href="/users">LISTADO DE USUARIOS</a></li>
+          <% } %>
+
           <li><a href="/cart" title="cart"><i class="fas fa-shopping-cart"></i></a></li>
           
           <% if(isAuthenticated) { %>

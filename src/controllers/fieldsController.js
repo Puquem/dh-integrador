@@ -1,10 +1,10 @@
-// Modelo de DB en Sequelize
+// Modelo de DB en SQL
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const Op = db.Sequelize.Op;
 
 //Express Validator - middlewares
-//const { validationResult } = require('express-validator'); 
+const { validationResult } = require('express-validator'); 
 
 const controller = {
     index: (req, res) => {
@@ -18,7 +18,7 @@ const controller = {
                         message: {
                             class: 'error-message',
                             title: 'Inexistente',
-                            desc: 'El producto que buscas no existe'
+                            desc: 'La página no existe'
                         }
                     });
                 }
@@ -56,7 +56,7 @@ const controller = {
 					.then(categories => {
 						return res.render('fields/create', { complexes, categories });
 					})
-					.catch(()=> res.render('fields/404', { 
+					.catch(() => res.render('fields/404', { 
                         message: {
                             class: 'error-message',
                             title: 'Inexistente',
@@ -65,7 +65,7 @@ const controller = {
                 })
             );
 			})
-			.catch(()=> res.render('fields/404', { 
+			.catch(() => res.render('fields/404', { 
                 message: {
                     class: 'error-message',
                     title: 'Inexistente',
@@ -75,15 +75,21 @@ const controller = {
         );
     },
     store: (req, res) => {
+        //Validaciones del Back
+        let errors = (validationResult(req));
+
+        //Si NO hay errores
+        if (errors.isEmpty()) {
+
         db.Fields.create ({
             complexes_id: req.body.complexes_id,
             name: req.body.name,
             categories_id: req.body.categories_id,
             price: req.body.price,
             description: req.body.description,
-            image1: req.files[0].filename,
-            image2: req.files[1].filename,
-            image3: req.files[2].filename
+            image1: req.files[0].filename ? req.file[0].filename : '', 
+            image2: req.files[1].filename ? req.file[1].filename : '',
+            image3: req.files[2].filename ? req.file[2].filename : '' 
         })
         .then(fieldCreated => {
             /*
@@ -98,11 +104,21 @@ const controller = {
             res.render('fields/404', { 
                 message: {
                     class: 'error-message',
-                    title: 'Inexistente',
+                    title: 'Problemas',
                     desc: 'No se pudo crear la cancha'
                 }
-        })
-    );   
+        })    
+    );  
+        //Si HAY errores
+        } else {
+            db.Complexes.findAll()
+			.then(complexes => {
+				db.Categories.findAll()
+					.then(categories => {
+                        return res.render('fields/create', { complexes, categories, errors: errors.errors});
+                    })
+            })
+        }   
     },
     edit: async (req, res) => {   
     /*
@@ -181,19 +197,10 @@ const controller = {
         }
         })
         .then(() => {
-            // Tené en cuenta que siempre los redireccionamientos comienzan con /
-            // Ej: /fields/3
             return res.redirect('/fields/' + req.params.id)
         })
         .catch(() => {
             return res.send('Catch');
-            // res.render('fields/404', { 
-            //     message: {
-            //         class: 'error-message',
-            //         title: 'Inexistente',
-            //         desc: 'No se ha podido modificar'
-            //     }
-            // })
         });
     },
     destroy: (req, res) => {
@@ -209,7 +216,7 @@ const controller = {
             res.render('fields/404', { 
                 message: {
                     class: 'error-message',
-                    title: 'Inexistente',
+                    title: 'Problemas',
                     desc: 'No se ha podido eliminar'
                 }
         })

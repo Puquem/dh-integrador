@@ -19,14 +19,31 @@
 	<div class="align">
 		<div class="form">
 			<h1>Ingresa</h1>
-			<form action="/users/login" method="POST">
+
+				<!-- Validaciones del back -->
+				<% if (typeof errors !== 'undefined') { %>
+					<div class= "errorsList">
+						<ul>
+							<% for(let oneError of errors) { %>
+							<li id="back" class="text-danger"> - <%= oneError.msg %> </li>
+							<% } %>
+						</ul>
+					</div>
+				<% } %>
+
+			<!-- Inicio del formulario de login -->
+
+			<form action="/users/login" method="POST" id="loginForm">
 				<div class="user-form">
 					<div class="input-fields">
-						<input type="text" class="input" placeholder="Email*" name="email" required>
-						<input type="password" class="input" placeholder="Contraseña*" name="password" required>
+						<input class="input" type="text" data-name="email" placeholder="Email*" name="email">
+						<div class="feedback"></div>
+						<input class="input"type="password" data-name="contraseña" placeholder="Contraseña*" name="password">
+						<div class="feedback"></div>
+
 						<div class="form-check form-check-inline" id="checkbox">
-							<input class="form-check-input" type="radio" name="remember" value="remember">
-							<label>Recordarme</label>
+							<input class="input" class="form-check-input" type="radio" name="remember" value="remember">
+							<label>    Recordarme</label>
 						</div>
 					</div>
 				</div>
@@ -44,6 +61,9 @@
 	
 	<!--Footer-->
 	<%- include("../partials/footer.ejs")%> 
+
+	<script src="/js/validator.min.js"></script>
+    <script src="/js/loginValidator.js"></script>
 
  </body>
 </html>

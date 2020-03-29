@@ -24,21 +24,38 @@
 					<li><a href="/users/login">&larr; Volver al login</a></li>
 				</div>
 			</div>
-			
-			<form action="/users" method="POST" enctype="multipart/form-data">
+
+			<!-- Validaciones del back -->
+			<% if (typeof errors !== 'undefined') { %>
+			<div class= "errorsList">
+				<ul>
+					<% for(let oneError of errors) { %>
+					<li id="back" class="text-danger"> - <%= oneError.msg %> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<!-- Inicio del formulario de registro -->
+			<form action="/users" method="POST" enctype="multipart/form-data" id="registerForm">
 				<div class="user-form">
 								
 					<div class="input-fields">
 						<label>Nombre:</label>
-						<input type="text" class="input" name="name" placeholder="Juan*">
+						<input class="input" type="text" name="name" data-name="nombre" placeholder="Juan*">
+						<div class="feedback"></div>
 						<label>Apellido:</label>
-						<input type="text" class="input" name="surname" placeholder="Perez*">
+						<input class="input" type="text" name="surname" data-name="apellido" placeholder="Perez*">
+						<div class="feedback"></div>
 						<label>Correo electrónico:</label>
-						<input type="text" class="input" name="email" placeholder="mail@mail.com*">
+						<input class="input"  type="text" name="email" data-name="email" placeholder="mail@mail.com*">
+						<div class="feedback"></div>
 						<label>Contraseña:</label>
-						<input type="password" class="input" name="password" placeholder="La contraseña debe tener más de 8 caractéres*">
+						<input class="input"  type="password" name="password" data-name="contraseña" placeholder="La contraseña debe tener más de 8 caractéres*">
+						<div class="feedback"></div>
 						<label>Avatar:</label>
-						<input type="file" name="avatar" title="Avatar">
+						<input class="input" type="file" name="avatar" data-name="imagen de perfil" title="Avatar">
+						<div class="feedback"></div>
 					</div>			
 
 				</div>
@@ -49,6 +66,10 @@
 	
 	<!--Footer -->
 	<%- include("../partials/footer.ejs")%> 
+
+	<!--Vinculación al documento de validación de JS Front, al ser EJS comienza con una "/"-->
+	<script src="/js/validator.min.js"></script>
+	<script src="/js/registerValidator.js"></script>
 	
  </body>
 </html>
