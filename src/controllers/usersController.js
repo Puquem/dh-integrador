@@ -1,4 +1,4 @@
-// Login Middlewares
+// Middleware que encripta las contraseñas
 const bcrypt = require('bcrypt');
 
 // Modelo de DB en Sequelize

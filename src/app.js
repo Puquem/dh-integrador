@@ -38,6 +38,7 @@ app.set("views", "src/views");
 app.use('/', require('./routes/main'));
 app.use('/fields', require('./routes/fields'));
 app.use('/users', require('./routes/users'));
+app.use('/api', require('./routes/api'));
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
