@@ -58,7 +58,7 @@ formInputs.forEach(oneInput => {
 
 		oneInput.addEventListener('change', function () {
 			// Array de extensiones permitidas
-			let validExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+			let validExtensions = ['jpg','jpeg','gif','png'];
 			// Extensión del archivo que desean subir
 			let fileExtension = this.value.split('.').pop();
 			// Booleano - true / false, si fileExtension está en el array de extensiones
