@@ -36,6 +36,7 @@ app.set("views", "src/views");
 // ************ Route System require and use() ************
 
 app.use('/', require('./routes/main'));
+app.use('/complexes', require('./routes/complexes'));
 app.use('/fields', require('./routes/fields'));
 app.use('/users', require('./routes/users'));
 app.use('/api', require('./routes/api'));

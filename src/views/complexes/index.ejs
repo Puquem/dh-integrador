@@ -3,9 +3,9 @@
 <head>
 	<%- include("../partials/head.ejs")%> 
 	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/css/list.css">
+	<link rel="stylesheet" href="/css/complexList.css">
 	
-	<title>METEGOL | Listado de Canchas</title>
+	<title>METEGOL | Listado de complejos</title>
 </head>
 
 <body>
@@ -17,27 +17,28 @@
 	<div class="align">
 		<div class="box">
 			<div class="container-title">
-				<h1>Listado de canchas</h1>
+				<h1>Listado de complejos</h1>
 				<div class="right">
-					<li><a href="/fields/create">AGREGAR CANCHAS</a></li>
+					<li><a>AGREGAR COMPLEJO</a></li>
 				</div>
 			</div>
 			<div class="row">
 				
-				<% fields.forEach( fields => { %>
+				<% complexes.forEach( complexes => { %>
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<a href="/fields/<%= fields.id %>"><img class="card-img-top" src="/images/fields/<%= fields.image1 %>"></a>
+							<!-- <a><img class="card-img-top" src="/images/fields/<%= complexes.fields.image1 %>"></a> -->
 							<div class="card-body">
-								<h4 class="card-title">
-									<a href="/fields/<%= fields.id %>"><%= fields.name %></a>
-								</h4>
-								<p class="card-text"><%= fields.description %></p>
+								<h3 class="card-title">
+									<a><%= complexes.complex %></a>
+								</h3>
+								<p class="card-text">Dirección: <%= complexes.address %></p>
+								<p class="card-text">Teléfono: <%= complexes.phone %></p>
 							</div>
 							<div class="card-footer">
-								<h4 class="card-text">ARS <%= fields.price %></h4>
-								<a class="btn btn-primary" type="submit" href="/fields/<%= fields.id %>">VER DETALLE</a>
+								<h5 class="card-text"> Canchas disponibles: <%= complexes.fields.sum %></h5>
+								<a class="btn btn-primary" type="submit" href="/fields">VER CANCHAS</a>
 							</div>
 						</div>
 					</div>

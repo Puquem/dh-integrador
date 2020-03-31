@@ -9,6 +9,13 @@ module.exports = (sequelize, dataTypes) => {
         address: dataTypes.STRING,
         phone: dataTypes.INTEGER,
 	});
+
+	Complex.associate = (models) => {
+		Complex.hasMany(models.Fields, {
+			as: 'fields',
+			foreignKey: 'complexes_id'
+		});
+	}
         
 	return Complex;
 }
