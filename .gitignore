@@ -45,3 +45,4 @@ Thumbs.db
 node_modules/
 fontawesome-free-5.11.2-web/
 .vscode/
+public/images/fields

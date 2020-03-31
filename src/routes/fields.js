@@ -5,14 +5,30 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.resolve(__dirname, '../../public/images/fields'));
+      cb(null, path.resolve(__dirname, '../../public/images/fields'));
     },
     filename: (req, file, cb) => {
       cb(null, file.fieldname + '-' + Date.now() + path.extname (file.originalname));
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({ 
+  storage,
+  // Esto valida uno a uno los archivos subidos
+  fileFilter: (req, file, cb) => {    
+    let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    let fileExtension = path.extname(file.originalname);
+    let extensionIsOk = acceptedExtensions.includes(fileExtension);
+    // Si la extensión de ese archivo es OK, lo subirá :(
+    // Por lo menos ahora solo sube imágenes
+    if (extensionIsOk) {
+      cb(null, true);
+    } else {
+      // Si no es la extensión esperada, no los sube
+      cb(null, false);
+    }
+  }
+});
 
 // ************ Controller Require ************
 const fieldsController = require('../controllers/fieldsController.js');
