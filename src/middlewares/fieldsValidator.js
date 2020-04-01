@@ -28,7 +28,7 @@ module.exports = [
 	check('image1', 'image2', 'image3')
 		.custom((value, { req }) => {
 			// req.files es un array que puede llegar con objetos literales o vacío
-			// Si viene con cosas, es pq ese campo pasó la validación de multer, es decir, viene con una o más imágenes
+			// Si viene con cosas, es pq ese campgit o pasó la validación de multer, es decir, viene con una o más imágenes
 			// Acá no vale la pena validar la extensión pues eso ya lo hizo multer
 
 			// Si req.files está vacío

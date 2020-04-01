@@ -12,7 +12,23 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({ 
+    storage,
+    // Esto valida uno a uno los archivos subidos
+    fileFilter: (req, file, cb) => {    
+      let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+      let fileExtension = path.extname(file.originalname);
+      let extensionIsOk = acceptedExtensions.includes(fileExtension);
+      // Si la extensión de ese archivo es OK, lo subirá :(
+      // Por lo menos ahora solo sube imágenes
+      if (extensionIsOk) {
+        cb(null, true);
+      } else {
+        // Si no es la extensión esperada, no los sube
+        cb(null, false);
+      }
+    }
+  });
 
 // ************ Controller Require ************
 const usersController = require('../controllers/usersController');

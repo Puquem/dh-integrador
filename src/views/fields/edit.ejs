@@ -60,6 +60,20 @@
                   </option>
                 <% }) %>
               </select>
+
+              <label>Tipo de cesped: </label>
+              <select class="selector" name="grasses_id">
+                <!-- Hay que hacer lo mismo que con el select "complexes_id" -->
+                <!-- <option value=""><%= fields.grasses.type %></option> -->
+                <% grasses.forEach(grasses => { %>
+                  <option 
+                    value="<%= grasses.id %>"
+                    <%= grasses.id === fields.grasses_id ? 'selected' : null %>
+                  > 
+                    <%= grasses.type %> 
+                  </option>
+                <% }) %>
+              </select>
         
               <label>Precio del alquiler por hora: </label>
               <input class="input" type="number" name="price" value="<%= fields.price %>">

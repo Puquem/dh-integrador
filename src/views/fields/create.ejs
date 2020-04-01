@@ -62,6 +62,15 @@
               </select>
               <div class="feedback"></div>
 
+              <label>Tipo de cesped: </label>
+              <select class="selector" name="grasses_id" data-name="tipo de cesped">
+                <option value="">Elegí el tipo de cesped</option>
+                <% grasses.forEach(grasses => { %>
+                <option value="<%= grasses.id %>"> <%= grasses.type %> </option>
+                <% }) %>
+              </select>
+              <div class="feedback"></div>
+
               <label>Precio del alquiler por hora: </label>
               <input class="input" type="number" name="price" data-name="precio" placeholder="0">
               <div class="feedback"></div>

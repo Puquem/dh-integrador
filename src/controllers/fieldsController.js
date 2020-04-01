@@ -9,7 +9,7 @@ const { validationResult } = require('express-validator');
 const controller = {
     index: (req, res) => {
         db.Fields
-            .findAll()
+            .findAll({include: ['categories']})
             .then(fields => {
                 if(fields) {
                     return res.render('fields/index', { fields });
@@ -27,7 +27,7 @@ const controller = {
     show: (req, res) => {
         db.Fields
             .findByPk (
-                req.params.id, {include: ['complexes', 'categories']
+                req.params.id, {include: ['complexes', 'categories', 'grasses']
             })
             .then(fields => {
                 /* 
@@ -49,30 +49,24 @@ const controller = {
                 }
             })
     },
-    create: (req, res) => {
-		db.Complexes.findAll()
-			.then(complexes => {
-				db.Categories.findAll()
-					.then(categories => {
-						return res.render('fields/create', { complexes, categories });
-					})
-					.catch(() => res.render('fields/404', { 
-                        message: {
-                            class: 'error-message',
-                            title: 'Inexistente',
-                            desc: 'No se ha encontrado la página'
-                        }
-                })
-            );
-			})
-			.catch(() => res.render('fields/404', { 
+    create: async (req, res) => {
+     
+        let fields = {include: ['complexes', 'categories', 'grasses']};
+        let complexes = await db.Complexes.findAll();
+        let categories = await db.Categories.findAll();
+        let grasses = await db.Grasses.findAll();
+    
+        if (fields) {
+            return res.render('fields/create', { complexes, categories, grasses });
+        } else {
+            return res.render('fields/404', {
                 message: {
                     class: 'error-message',
-                    title: 'Inexistente',
-                    desc: 'No se ha encontrado la página'
+                    title: 'No se ha encontrado la página',
+                    desc: 'En este momento no se puede crear la cancha'
                 }
-        })
-        );
+            });
+        }
     },
     store: (req, res) => {
         //Validaciones del Back
@@ -85,6 +79,7 @@ const controller = {
             complexes_id: req.body.complexes_id,
             name: req.body.name,
             categories_id: req.body.categories_id,
+            grasses_id: req.body.grasses_id,
             price: req.body.price,
             description: req.body.description,
             image1: req.files[0].filename,
@@ -115,7 +110,7 @@ const controller = {
 			.then(complexes => {
 				db.Categories.findAll()
 					.then(categories => {
-                        return res.render('fields/create', { complexes, categories, errors: errors.errors});
+                        return res.render('fields/create', { complexes, categories, grasses, errors: errors.errors});
                     })
             })
         }   
@@ -127,13 +122,14 @@ const controller = {
     */ 
 
     // AHORA
-    let fields = await db.Fields.findByPk(req.params.id, {include: ['complexes', 'categories']});
+    let fields = await db.Fields.findByPk(req.params.id, {include: ['complexes', 'categories', 'grasses']});
     let complexes = await db.Complexes.findAll();
     let categories = await db.Categories.findAll();
+    let grasses = await db.Grasses.findAll();
 
     // $JAVI's-COMMENT: cuando no se encuentra un Field con ese ID, "fields" será null
     if (fields) {
-        return res.render('fields/edit', { fields, complexes, categories });
+        return res.render('fields/edit', { fields, complexes, categories, grasses });
     } else {
         return res.render('fields/404', {
             message: {
@@ -187,6 +183,7 @@ const controller = {
             complexes_id: req.body.complexes_id,
             name: req.body.name,
             categories_id: req.body.categories_id,
+            grasses_id: req.body.grasses_id,
             price: req.body.price,
             description: req.body.description,
             image1: req.files[0] ? req.files[0].filename: req.body.image1,

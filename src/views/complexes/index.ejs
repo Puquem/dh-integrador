@@ -5,7 +5,7 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" href="/css/complexList.css">
 	
-	<title>METEGOL | Listado de complejos</title>
+	<title>METEGOL | Listado de Complejos</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<!-- <a><img class="card-img-top" src="/images/fields/<%= complexes.fields.image1 %>"></a> -->
+							<a><img class="card-img-top" src="/images/complexes/<%= complexes.image %>"></a>
 							<div class="card-body">
 								<h3 class="card-title">
 									<a><%= complexes.complex %></a>
@@ -37,7 +37,7 @@
 								<p class="card-text">Teléfono: <%= complexes.phone %></p>
 							</div>
 							<div class="card-footer">
-								<h5 class="card-text"> Canchas disponibles: <%= complexes.fields.sum %></h5>
+								<h5 class="card-text"> Canchas disponibles: <%= count %></h5>
 								<a class="btn btn-primary" type="submit" href="/fields">VER CANCHAS</a>
 							</div>
 						</div>

@@ -7,14 +7,13 @@ const controller = {
     index: async (req, res) => {
 
         let complexes = await db.Complexes.findAll({include: ['fields']});
-        let count= await db.Fields.count({
-            where: {
-                complexes_id = complexes.id
-            }
-        });
+        let fields = await db.Fields.findAll();
+        let count = await db.sequelize.query ("SELECT count(name), complexes_id FROM fields GROUP BY complexes_id");
+
+        console.log(count);
 
         if (complexes) {
-                return res.render('complexes/index', {complexes, count});
+                return res.render('complexes/index', {complexes, fields, count});
             } else {
                 return res.status(404).render('complexes/404', {
                     message: {

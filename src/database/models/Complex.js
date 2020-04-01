@@ -7,7 +7,8 @@ module.exports = (sequelize, dataTypes) => {
 		},
         complex: dataTypes.STRING,
         address: dataTypes.STRING,
-        phone: dataTypes.INTEGER,
+		phone: dataTypes.INTEGER,
+		image: dataTypes.STRING
 	});
 
 	Complex.associate = (models) => {
