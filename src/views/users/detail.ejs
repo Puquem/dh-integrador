@@ -33,7 +33,7 @@
                 <p><%= user.email %></p>
                     
 				<section class="buttons">
-					<form class="has-buttons" action="?_method=DELETE" method="POST" href="/users/<%= user.id %>">
+					<form class="has-buttons" action="?_method=DELETE" method="POST" href="/users/<%= user.id %>" onclick="return confirm('¿Está seguro que desea eliminar este usuario?')">
 						<button class="btn btn-danger" type="submit">ELIMINAR</button>
 					</form>
 					<a class="btn btn-primary" type="submit" href="/users/<%= user.id %>/edit">EDITAR</a>

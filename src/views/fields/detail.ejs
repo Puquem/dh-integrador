@@ -72,7 +72,7 @@
 					<p>ARS <%= fields.price %></p>
 					
 					<section class="buttons">
-						<form class="has-buttons" action="?_method=DELETE" method="POST" href="/fields/<%= fields.id %>">
+						<form class="has-buttons" action="?_method=DELETE" method="POST" href="/fields/<%= fields.id %>" onclick="return confirm('¿Está seguro que desea eliminar esta cancha?')">
 							<button class="btn btn-danger" type="submit">ELIMINAR</button>
 						</form>
 						<a class="btn btn-primary" type="submit" href="/fields/<%= fields.id %>/edit">EDITAR</a>
