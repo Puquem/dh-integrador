@@ -39,7 +39,8 @@
 
           <!-- Formulario -->
           <div class="field-form">
-                         
+
+                    
               <label>Nombre del complejo:</label>
               <select class="selector" name="complexes_id" data-name="complejo">
                 <option value="">Elegí el complejo al que pertenece la cancha</option>
@@ -52,7 +53,8 @@
               <label>Nombre de la cancha:</label>
               <input type="text" class="input" name="name" data-name="nombre de la cancha" placeholder="Nombre de la cancha*">
               <div class="feedback"></div>
-              
+
+            <div class="group">                
               <label>Tipo de cancha: </label>
               <select class="selector" name="categories_id" data-name="tipo de cancha">
                 <option value="">Elegí el tipo de cancha</option>
@@ -74,11 +76,12 @@
               <label>Precio del alquiler por hora: </label>
               <input class="input" type="number" name="price" data-name="precio" placeholder="0">
               <div class="feedback"></div>
+            </div>
 
               <label>Servicios: </label>
               <input class="input" name="description" data-name="descripción" placeholder="Descripción de servicios*">
               <div class="feedback"></div>
-           
+               
           </div>
 
           <!-- Imágenes -->
@@ -92,8 +95,10 @@
                 <input id="inputimg" type="file" name="image2" data-name="imagen">
                 <label>Imagen 3:</label>
                 <input id="inputimg" type="file" name="image3" data-name="imagen">
-                <div class="feedback"></div>
               </div>
+              
+            <div class="feedback"></div>
+            
           </div>
           <!-- Submit -->
           <button type="submit" value="submit" class="btn btn-primary">GUARDAR</button>

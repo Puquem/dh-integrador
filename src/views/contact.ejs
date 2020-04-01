@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("partials/head.ejs")%> 
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="/css/createUser.css">
+	
+	<title>METEGOL | Contactanos</title>
+</head>
+
+<body>
+	
+	 <!--Header-->
+	<%- include("partials/header.ejs")%> 
+	
+	<!--Main Content-->
+
+	<div class="align">
+		<div class="form">
+
+			<div class="container-title">
+				<h1>Contactanos</h1>
+			</div>
+
+            <h5>Siempre queremos escuchar ideas, propuestas y sugerencias.</h5> 
+            <p>Completá el siguiente formulario y nos pondremos en contacto contigo a la brevedad</p>
+			<!-- Inicio del formulario de registro -->
+			<form action="/" method="" enctype="multipart/form-data" id="registerForm">
+				<div class="user-form">
+								
+					<div class="input-fields">
+						<label>Nombre y apellido:</label>
+						<input class="input" type="text" name="name">
+						<label>Correo electrónico:</label>
+						<input class="input"  type="text" name="email">
+						<label>Teléfono:</label>
+						<input class="input" type="text" name="name">
+						<label>Comentarios:</label>
+						<input class="input" type="text" name="name">
+					</div>			
+
+				</div>
+				<div><button type="submit" class="btn btn-primary">ENVIAR</button></div>
+			</form>	
+		</div>
+	</div>
+	
+	<!--Footer -->
+	<%- include("partials/footer.ejs")%> 
+	
+ </body>
+</html>
