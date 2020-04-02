@@ -110,7 +110,6 @@ ul,ol{
   border-radius: 50%;
 }
 
-
 @media (max-width: 670px) {
  
   .header-right {
@@ -119,9 +118,10 @@ ul,ol{
  
   .hamburguer-icon {
     display: block;
+    margin-right: 30px;
+    margin-top: 5px;
   }
 }
-
 
 /* Body */
 .align{
@@ -257,6 +257,13 @@ p{
   background-color:darkred; 
   border-color: darkred;
   color: white;
+}
+
+@media (max-width: 670px) {
+ 
+  .align{
+    margin:10%;
+  }
 }
 
 /*Footer*/

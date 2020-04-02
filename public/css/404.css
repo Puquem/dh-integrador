@@ -119,6 +119,8 @@ ul,ol{
  
   .hamburguer-icon {
     display: block;
+    margin-right: 30px;
+    margin-top: 5px;
   }
 }
 

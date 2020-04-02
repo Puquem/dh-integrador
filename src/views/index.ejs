@@ -43,26 +43,32 @@
 
 		<!--Cajas-->
 		<!--Reescribí el HTML, eliminé el section y en su lugar creé rows. Dejé comentado cómo estaba antes-->
-		
-		<div class="container">
-			<div class="rowbox" id="box">
-				<div class="col-4 text-center col-lg-4">
-						<img src="/images/futbol.jpg" class="rounded" style="max-width: 90%">
-						<!-- <input href="/fields" type="button"  value="Ver canchas disponibles"> -->
-						<a href="/fields"><h3 class="btn btn-sm" style="max-width: 90%">Ver canchas disponibles</h3></a>
+
+		<div class="form-row">
+			<div class="container">
+			
+				<div class="rowbox" id="box">
+					<div class="col-md-4 text-center col-lg-4">
+							<img src="/images/futbol.jpg" class="rounded" style="max-width: 90%">
+							<!-- <input href="/fields" type="button"  value="Ver canchas disponibles"> -->
+							<a href="/fields"><h3 class="btn btn-sm" style="max-width: 90%">Ver canchas disponibles</h3></a>
+					</div>
+					<div class="col-md-4 text-center col-lg-4">
+							<img src="/images/torneo.jpg" class="rounded" style="max-width: 90%">
+							<!-- <input type="button" class="btn btn-primary btn-sm" value="Ver complejos disponibles"style="max-width: 90%;"> -->
+							<a href="/complexes"><h3 class="btn btn-sm" style="max-width: 90%">Ver complejos disponibles</h3></a>
+					</div>
+					<div class="col-md-4 text-center col-lg-4">
+							<img src="/images/equipo.jpg" class="rounded" style="max-width: 90%">
+							<!-- <input type="button" class="btn btn-primary btn-sm" value="Unirme a un partido"style="max-width: 90%;"> -->
+							<a><h3 class="btn btn-sm" style="max-width: 90%">Ver torneos disponibles</h3></a>
+					</div>
 				</div>
-				<div class="col-4 text-center col-lg-4">
-						<img src="/images/torneo.jpg" class="rounded" style="max-width: 90%">
-						<!-- <input type="button" class="btn btn-primary btn-sm" value="Ver complejos disponibles"style="max-width: 90%;"> -->
-						<a href="/complexes"><h3 class="btn btn-sm" style="max-width: 90%">Ver complejos disponibles</h3></a>
-				</div>
-				<div class="col-4 text-center col-lg-4">
-						<img src="/images/equipo.jpg" class="rounded" style="max-width: 90%">
-						<!-- <input type="button" class="btn btn-primary btn-sm" value="Unirme a un partido"style="max-width: 90%;"> -->
-						<a><h3 class="btn btn-sm" style="max-width: 90%">Ver torneos disponibles</h3></a>
-				</div>
+            
 			</div>
 		</div>
+		
+	
 		
 		<!--Footer-->
 		<%- include("partials/footer.ejs")%> 

@@ -57,7 +57,7 @@ ul,ol{
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 25px;
   border-radius: 4px;
 }
@@ -119,6 +119,8 @@ ul,ol{
  
   .hamburguer-icon {
     display: block;
+    margin-right: 30px;
+    margin-top: 5px;
   }
 }
 
@@ -190,7 +192,6 @@ ul,ol{
   padding: 20px;
   margin-top: 50px;
   box-sizing: border-box;
-  margin-top: 50px;
 }
 
 .rounded{
@@ -212,7 +213,43 @@ ul,ol{
   background-color:darkred; 
   border-color: darkred;
   color: white;
+}
+@media (max-width: 900px) {
+  .selectpicker{
+    margin:5px;
+  }
 
+  .searchcontainer {
+    margin-top: 15px; 
+   }
+ 
+   .rowbox{
+     margin-top: 15px;
+   }
+
+}
+
+@media (max-width: 670px) {
+  .jugar h1{
+    font-size: 7vh;
+  }
+  
+  .subtitulo{
+    color: white;
+    font-size: 2vh;
+  }
+
+  .searchcontainer {
+   margin-top: 0px; 
+  }
+
+  .rowbox{
+    margin-top: 0px;
+  }
+
+  .selectpicker{
+    margin:5px;
+  }
 }
 
 /*Footer*/
@@ -268,4 +305,7 @@ ul,ol{
 .footer-left i:hover {
   color: #5CDB95;
 }
+
+
+
 

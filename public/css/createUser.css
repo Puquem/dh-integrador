@@ -119,9 +119,10 @@ ul,ol{
  
   .hamburguer-icon {
     display: block;
+    margin-right: 30px;
+    margin-top: 5px;
   }
 }
-
 
 /* Main Content*/ 
 
@@ -305,3 +306,33 @@ label{
 .footer-left i:hover {
   color: #5CDB95;
 }
+
+
+
+@media (max-width: 900px) {
+ 
+  .align{
+    text-align: center;
+    margin-top:10%;
+  }
+  
+  .form{
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 670px) {
+ 
+  .align{
+    text-align: center;
+    margin-top:15%;
+  }
+  
+  .form{
+    width: 100%;
+  }
+}
+
+
+  

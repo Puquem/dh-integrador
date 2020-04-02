@@ -110,7 +110,6 @@ ul,ol{
   border-radius: 50%;
 }
 
-
 @media (max-width: 670px) {
  
   .header-right {
@@ -119,6 +118,8 @@ ul,ol{
  
   .hamburguer-icon {
     display: block;
+    margin-right: 30px;
+    margin-top: 5px;
   }
 }
 
@@ -343,4 +344,33 @@ input[type=number] {
 
 .footer-left i:hover {
   color: #5CDB95;
+}
+
+@media (max-width: 900px) {
+ 
+  .align{
+    text-align: center;
+    margin-top:10%;
+    margin-left:0%;
+    margin-right: 0%;
+  }
+  
+  .form{
+    max-width:95%;
+  }
+
+}
+
+@media (max-width: 670px) {
+ 
+  .align{
+    text-align: center;
+    margin-top:15%;
+    margin-left:0%;
+    margin-right: 0%;
+  }
+  
+  .form{
+    max-width: 95%;
+  }
 }

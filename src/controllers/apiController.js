@@ -6,7 +6,12 @@ const controller = {
 
     users:(req, res) => {
         //Busca todos los usuarios en la DB
-        db.Users.findAll()
+        db.Users.findAll(
+            {
+                order: [ ['id', 'DESC']],
+                attributes: ['id','name','surname','email', 'avatar'],
+            }
+        )
         .then(allUsers => {
             //Genera la metadata: el primer resultado va a ser la URL de la api y el segundo, la cantidad total de usuarios
             let result = {  
@@ -43,7 +48,7 @@ const controller = {
         let allFields = db.Fields.findAll(
             {
                 order: [ ['id', 'DESC']],
-                attributes: ['id','name', 'price','description', 'image1'],
+                attributes: ['id','name','price','description', 'image1'],
             }
            );
     

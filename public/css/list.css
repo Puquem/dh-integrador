@@ -110,7 +110,6 @@ ul,ol{
   border-radius: 50%;
 }
 
-
 @media (max-width: 670px) {
  
   .header-right {
@@ -119,9 +118,10 @@ ul,ol{
  
   .hamburguer-icon {
     display: block;
+    margin-right: 30px;
+    margin-top: 5px;
   }
 }
-
 
 /* Main Content*/ 
 
@@ -292,16 +292,32 @@ p{
   @media (min-width:450px) and (orientation:portrait) {
     .container {
        width: 80%
-  }}
+    }
+    .align{
+      text-align: center;
+      margin-top:7%;
+    }
+  }
   
-  @media (min-width:900px) {
+  @media (max-width:900px) {
     .container {
       width: 40%
-  }}
+    }
+
+    .align{
+      text-align: center;
+      margin-top:10%;
+    }
+}
   
   @media screen and (max-width: 600px){
     .user-form{
       flex-direction: column;
+    }
+   
+    .align{
+      text-align: center;
+      margin-top:20%;
     }
     
     .input-fields{
