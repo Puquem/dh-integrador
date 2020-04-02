@@ -108,12 +108,15 @@ const controller = {
         } else {
             db.Complexes.findAll()
 			.then(complexes => {
-				db.Categories.findAll()
-					.then(categories => {
-                        return res.render('fields/create', { complexes, categories, grasses, errors: errors.errors});
-                    })
-            })
-        }   
+                db.Grasses.findAll()
+                .then(grasses => {
+                    db.Categories.findAll()
+                        .then(categories => {
+                            return res.render('fields/create', { complexes, categories, grasses, errors: errors.errors});
+                        })
+                })
+           })
+        }
     },
     edit: async (req, res) => {   
     /*

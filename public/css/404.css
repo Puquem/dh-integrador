@@ -2,19 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
-/* CSS Base */
-
+/*CSS Base*/
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Raleway',sans-serif, Helvetica;
-  background: linear-gradient(rgba(2, 11, 128, 0.5), rgba(2, 160, 94, 0.5)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
+  background: linear-gradient(rgba(2, 11, 128, 0.6), rgba(2, 11, 128, 0.6)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 200%;
+  width: 100%;
 }
 
 ul,ol{
@@ -23,13 +24,14 @@ ul,ol{
   margin: 0;
 }
 
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
-/* Header */
+/*Header*/
 .header{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-bottom:white solid 5px;
   height: 70px;
 }
 
@@ -52,7 +54,6 @@ a {
 }
 
 .header a{
-  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -69,8 +70,8 @@ a {
   margin-top: 20px;
 }
 
-.fas fa-shopping-cart{
-  color: beige;
+.fas{
+  color: white;
 }
 
 .header-right li{
@@ -79,19 +80,32 @@ a {
 }
 
 .header-right a {
-  color:#edf5e1;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 16px;
   margin: 10px;
+  transition: transform .5s ease;
+}
+
+.header-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+} 
+
+.header-right a:hover {
+  color:#5CDB95;
+} 
+
+.fas:hover{
+  color: #5CDB95;
 }
 
 .user-badge {
-  color:#edf5e1;
+  color:white;
 }
 
 .header-right img {
-  height: 40px;
+  height: 30px;
   width: auto;
   border-radius: 50%;
 }
@@ -107,6 +121,7 @@ a {
     display: block;
   }
 }
+
 
 /* Body */
 
@@ -147,8 +162,8 @@ p{
 }
 
 .btn {
-  background-color:#05386b; ;
-  border-color:#05386b; ;
+  background-color:#2F9985; 
+  border-color:#2F9985; 
   color: white;
   text-align: center;
   padding: 15px;
@@ -157,15 +172,22 @@ p{
   text-transform: uppercase;
   float: center;
   cursor: pointer;
-  margin-top:10px;
+  margin-top: 20px;
   width: 100%;
 }
 
-/* Footer */
+.btn:hover{
+  background-color:#5CDB95;
+  border-color: #5CDB95;
+  color: white;
+}
+
+/*Footer*/
 .footer{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-top:white solid 5px;
+  height: 60px;
   overflow: hidden;
-  max-height: 70px;
 }
 
 .footer-left a{
@@ -179,7 +201,7 @@ p{
 }
 
 .footer-left i{
-  color: #edf5e1;
+  color:white;
   font-size: 3vh;
 }
 
@@ -190,13 +212,26 @@ p{
 
 .footer-right li{
   display :inline-block;
-  margin: 5px;
+  margin: 0px 5px;
 }
 
-.footer-right li a {
-  color:#edf5e1;
+.footer-right a {
+  text-decoration: none;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;
   margin: 10px;
+}
+
+.footer-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+}
+
+.footer-right a:hover {
+  color: #5CDB95;
+}
+
+.footer-left i:hover {
+  color: #5CDB95;
 }

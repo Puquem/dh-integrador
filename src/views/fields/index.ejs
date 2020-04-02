@@ -15,11 +15,12 @@
 	
 	<!--Main Content-->
 	<div class="align">
+
 		<div class="box">
 			<div class="container-title">
 				<h1>Listado de canchas</h1>
 				<div class="right">
-					<li><a href="/fields/create">AGREGAR CANCHAS</a></li>
+					<li><a href="/fields/create"><i class="fas fa-plus"></i>AGREGAR CANCHAS</a></li>
 				</div>
 			</div>
 			<div class="row">
@@ -28,20 +29,21 @@
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<a href="/fields/<%= fields.id %>"><img class="card-img-top" src="/images/fields/<%= fields.image1 %>"></a>
+							<a href="/fields/<%= fields.id %>"><img style="height: 235px" class="card-img-top" src="/images/fields/<%= fields.image1 %>"></a>
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="/fields/<%= fields.id %>"><%= fields.name %></a>
 								</h4>
-								<h5><%= fields.categories.category %></h5>
+								<h5><b><%= fields.categories.category %></b></h5>
 								<p class="card-text"><%= fields.description %></p>
 							</div>
 							<div class="card-footer">
-								<h4 class="card-text">ARS <%= fields.price %></h4>
-								<a class="btn btn-primary" type="submit" href="/fields/<%= fields.id %>">VER DETALLE</a>
+								<h4 class="card-text"> <b>ARS <%= fields.price %></b></h4>
+								<a class="btn" type="submit" href="/fields/<%= fields.id %>">VER DETALLE</a>
 							</div>
 						</div>
 					</div>
+
 				<% })%>
 				
 			</div>

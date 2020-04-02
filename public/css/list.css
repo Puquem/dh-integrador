@@ -3,18 +3,19 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 /*CSS Base*/
-
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Raleway',sans-serif, Helvetica;
-  background: linear-gradient(rgba(2, 11, 128, 0.5), rgba(2, 160, 94, 0.5)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
+  background: linear-gradient(rgba(2, 11, 128, 0.6), rgba(2, 11, 128, 0.6)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 200%;
+  width: 100%;
 }
 
 ul,ol{
@@ -23,13 +24,14 @@ ul,ol{
   margin: 0;
 }
 
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
 /*Header*/
 .header{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-bottom:white solid 5px;
   height: 70px;
 }
 
@@ -52,8 +54,6 @@ a {
 }
 
 .header a{
-  /*float: left;*/
-  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -70,8 +70,8 @@ a {
   margin-top: 20px;
 }
 
-.fas fa-shopping-cart{
-  color: beige;
+.fas{
+  color: white;
 }
 
 .header-right li{
@@ -80,19 +80,32 @@ a {
 }
 
 .header-right a {
-  color:#edf5e1;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 16px;
   margin: 10px;
+  transition: transform .5s ease;
+}
+
+.header-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+} 
+
+.header-right a:hover {
+  color:#5CDB95;
+} 
+
+.fas:hover{
+  color: #5CDB95;
 }
 
 .user-badge {
-  color:#edf5e1;
+  color:white;
 }
 
 .header-right img {
-  height: 40px;
+  height: 30px;
   width: auto;
   border-radius: 50%;
 }
@@ -108,6 +121,7 @@ a {
     display: block;
   }
 }
+
 
 /* Main Content*/ 
 
@@ -130,13 +144,13 @@ a {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 15px;
 }
 
 h1{
-  color: rgb(65, 65, 65);
-  font-style: bold;
-  margin-bottom: 30px;
+  color: #3F3F41;
   text-align: left;
+  font-size: 3vh;
 }
 
 .right li{
@@ -145,10 +159,21 @@ h1{
 }
 
 .right a {
-  color: rgb(65, 65, 65);
+  color:  #3F3F41;
   text-align: center;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.right .fas{
+  color:  gray;
+  margin: 0px 5px;
+}
+
+.right li :hover{
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 .user-form{
@@ -156,37 +181,40 @@ h1{
   margin: 0 auto;
 } 
 
+.card-title a{
+  color: #2F9985;
+  text-size-adjust: inherit;
+  text-decoration: none;
+  font-size: 2.5vh;
+}
+
+.card-title a:hover{
+  color: #5CDB95;
+  text-decoration: none;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
+}
+
+h5{
+  font-size: 1.7vh
+}
+
+p{
+  font-size: 1.7vh
+}
+
 #space{
   margin-bottom: 2%;
 }
-
-.input-fields{
-  flex-direction: column;
-  margin-right: 2%;
-  width: 100%;
-}
-
-.input-fields-sd{
-  flex-direction: column;
-  width: 100%;
-  margin-left: 2%;
-}
  
-.input-fields input,
-.input-fields-sd input
-{
-  margin: 10px 0;
-  background: transparent;
-  border: 0px;
-  border-bottom: 2px solid #063549;
-  padding: 10px;
-  color:#063549;
-  width: 100%;
-}
-
 .btn {
-  background-color:#05386b; ;
-  border-color:#05386b; ;
+  background-color:#2F9985; 
+  border-color:#2F9985; 
   color: white;
   text-align: center;
   padding: 15px;
@@ -195,14 +223,22 @@ h1{
   text-transform: uppercase;
   float: center;
   cursor: pointer;
+  margin-top: 10px;
   width: 100%;
 }
- 
+
+.btn:hover{
+  background-color:#5CDB95;
+  border-color: #5CDB95;
+  color: white;
+}
+
 /*Footer*/
 .footer{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-top:white solid 5px;
+  height: 60px;
   overflow: hidden;
-  max-height: 70px;
 }
 
 .footer-left a{
@@ -216,7 +252,7 @@ h1{
 }
 
 .footer-left i{
-  color: #edf5e1;
+  color:white;
   font-size: 3vh;
 }
 
@@ -227,17 +263,29 @@ h1{
 
 .footer-right li{
   display :inline-block;
-  margin: 5px;
+  margin: 0px 5px;
 }
 
-.footer-right li a {
-  color:#edf5e1;
+.footer-right a {
+  text-decoration: none;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;
   margin: 10px;
 }
 
+.footer-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+}
+
+.footer-right a:hover {
+  color: #5CDB95;
+}
+
+.footer-left i:hover {
+  color: #5CDB95;
+}
   
 /* Mobile first*/
 

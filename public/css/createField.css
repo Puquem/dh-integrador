@@ -3,18 +3,19 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 /*CSS Base*/
-
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Raleway',sans-serif, Helvetica;
-  background: linear-gradient(rgba(2, 11, 128, 0.5), rgba(2, 160, 94, 0.5)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
+  background: linear-gradient(rgba(2, 11, 128, 0.6), rgba(2, 11, 128, 0.6)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 200%;
+  width: 100%;
 }
 
 ul,ol{
@@ -23,13 +24,14 @@ ul,ol{
   margin: 0;
 }
 
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
 /*Header*/
 .header{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-bottom:white solid 5px;
   height: 70px;
 }
 
@@ -52,8 +54,6 @@ a {
 }
 
 .header a{
-  /*float: left;*/
-  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -70,8 +70,8 @@ a {
   margin-top: 20px;
 }
 
-.fas fa-shopping-cart{
-  color: beige;
+.header-right .fas{
+  color: white;
 }
 
 .header-right li{
@@ -80,19 +80,32 @@ a {
 }
 
 .header-right a {
-  color:#edf5e1;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 16px;
   margin: 10px;
+  transition: transform .5s ease;
+}
+
+.header-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+} 
+
+.header-right a:hover {
+  color:#5CDB95;
+} 
+
+.fas:hover{
+  color: #5CDB95;
 }
 
 .user-badge {
-  color:#edf5e1;
+  color:white;
 }
 
 .header-right img {
-  height: 40px;
+  height: 30px;
   width: auto;
   border-radius: 50%;
 }
@@ -109,104 +122,7 @@ a {
   }
 }
 
-/* Main Content*/ 
-
-
-/* 
-.form h1{
-  color: rgb(65, 65, 65);
-  text-align: left;
-  font-style: bold;
-  margin-bottom: 30px;
-  font-size: 3vh;
-}
-
-.field-form{
-  display: flex;
-  margin: 0 auto;
-} 
-  
-.input-fields{
-  flex-direction: column;
-  margin-right: 2%;
-  width: 100%;
-}
-
-.input-fields-sd{
-  flex-direction: column;
-  width: 100%;
-  margin-left: 2%;
-}
- 
-.input-fields input,
-.input-fields-sd input
-{
-  margin: 10px 0px;
-  background: transparent;
-  border: 0px;
-  border-bottom: 2px solid #063549;
-  color:#063549;
-  width: 100%;
-}
-
-label{
-  margin: 10px 0px;
-}
-
-.selector{
-  background: transparent;
-  border: 0px;
-  border-bottom: 2px solid #063549;
-  color:#063549;
-  width: 100%;
-  height: 28px;
-  margin: 10px 0px;
-}
-/* 
-/* Eliminar el arrow por default en el type="number" */
-/* input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance:textfield;
-}
-
-.description{
-  float: center;
-  text-align: left;
-  align-items: left;
-}
-
-input{
-  background: transparent;
-  border: 0px;
-  border-bottom: 2px solid #063549;
-  color:#063549;
-  width: 100%;
-  height: 28px;
-  margin: 10px 0px;
-}
-
-.upload-images{
-  display: flex;
-  margin: 0 auto;
-}
-
-.custom-file{
-  flex-direction: column;
-  width: 100%;
-}
-
-.input-group{
-  margin: 0px 1%;
-}
-
-} */
-
-
+/* Main Content*/
 
 .align{
   text-align: center;
@@ -234,7 +150,7 @@ input{
 }
 
 .form h1{
-  color: rgb(65, 65, 65);
+  color: #3F3F41;
   text-align: left;
   font-size: 3vh;
 }
@@ -245,26 +161,40 @@ input{
 }
 
 .right a {
-color: rgb(65, 65, 65);
+color:  #3F3F41;
 text-align: center;
 text-transform: uppercase;
 font-size: 15px;
+text-decoration: none;
+}
+
+.right .fas{
+  color:  gray;
+  margin: 0px 5px;
+}
+
+.right li :hover{
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 .errorsList{
   margin-bottom: 15px;
-  background-color: pink;
+  background-color: #EE1945;
 }
 
 #back{
   font-size: 1.3vh;
-  color: #EE1945;
+  color:white;
   margin-left: 5px;
 }
 
 .field-form{
   margin: 0 auto;
   width: 100%;
+  display: content;
+  flex-flow: row wrap;
+  align-items: center;
 } 
  
 .input {
@@ -277,15 +207,8 @@ font-size: 15px;
 }
 
 label{
-  margin: 5px 0px;
-}
-
-.group{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 .selector{
@@ -295,6 +218,7 @@ label{
   color:#063549;
   width: 100%;
   height: 28px;
+  font-size: 15px;
 }
 
 /* Eliminar el arrow por default en el type="number" */
@@ -310,14 +234,13 @@ input[type=number] {
 
 .upload-images{
   display: flex;
+  display:inline-block;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 2.5px;
 }
 
 .inputimg {
-  margin: 2.5px 0px;
   background: transparent;
   border: 0px;
   border-bottom: 2px solid #063549;
@@ -325,9 +248,14 @@ input[type=number] {
   height: 28px;
 }
 
+.fieldimg{
+  margin:15px;
+  height: 50px;
+  width: auto;
+} 
+
 .error{
   border-bottom: solid 2px #EE1945;
-  color: #EE1945;
 }
 
 /* Selector de hermanos*/
@@ -343,8 +271,8 @@ input[type=number] {
 }
 
 .btn {
-  background-color:#05386b; ;
-  border-color:#05386b; ;
+  background-color:#2F9985; 
+  border-color:#2F9985; 
   color: white;
   text-align: center;
   padding: 15px;
@@ -353,17 +281,24 @@ input[type=number] {
   text-transform: uppercase;
   float: center;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
+}
+
+.btn:hover{
+  background-color:#5CDB95;
+  border-color: #5CDB95;
+  color: white;
 }
   
 /*Footer*/
 .footer{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-top:white solid 5px;
+  height: 60px;
   overflow: hidden;
-  max-height: 70px;
 }
-  
+
 .footer-left a{
   float: left;
   text-align: center;
@@ -373,27 +308,39 @@ input[type=number] {
   line-height: 25px;
   border-radius: 4px;
 }
-  
+
 .footer-left i{
-  color: #edf5e1;
+  color:white;
   font-size: 3vh;
 }
-  
+
 .footer-right{
   float: right;
   margin-top: 10px;
 }
-  
+
 .footer-right li{
   display :inline-block;
-  margin: 5px;
+  margin: 0px 5px;
 }
-  
-.footer-right li a {
-  color:#edf5e1;
+
+.footer-right a {
+  text-decoration: none;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;
   margin: 10px;
 }
-  
+
+.footer-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+}
+
+.footer-right a:hover {
+  color: #5CDB95;
+}
+
+.footer-left i:hover {
+  color: #5CDB95;
+}

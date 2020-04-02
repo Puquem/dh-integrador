@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Raleway',sans-serif, Helvetica;
-  background: linear-gradient(rgba(2, 11, 128, 0.5), rgba(2, 160, 94, 0.5)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
+  background: linear-gradient(rgba(2, 11, 128, 0.6), rgba(2, 11, 128, 0.6)) fixed, url(../images/fondo.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -24,13 +24,14 @@ ul,ol{
   margin: 0;
 }
 
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
 /*Header*/
 .header{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-bottom:white solid 5px;
   height: 70px;
 }
 
@@ -53,8 +54,6 @@ a {
 }
 
 .header a{
-  /*float: left;*/
-  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -71,8 +70,8 @@ a {
   margin-top: 20px;
 }
 
-.fas fa-shopping-cart{
-  color: beige;
+.fas{
+  color: white;
 }
 
 .header-right li{
@@ -81,19 +80,32 @@ a {
 }
 
 .header-right a {
-  color:#edf5e1;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 16px;
   margin: 10px;
+  transition: transform .5s ease;
+}
+
+.header-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+} 
+
+.header-right a:hover {
+  color:#5CDB95;
+} 
+
+.fas:hover{
+  color: #5CDB95;
 }
 
 .user-badge {
-  color:#edf5e1;
+  color:white;
 }
 
 .header-right img {
-  height: 40px;
+  height: 30px;
   width: auto;
   border-radius: 50%;
 }
@@ -132,22 +144,35 @@ a {
   font-size: 3vh;
 }
 
-.jugar form{
+.searchcontainer {
   float:center;
-  margin-top: 50px;
+  margin-top: 50px; 
 }
 
 .selectpicker{
-  background-color:#05386b; ;
-  border-color:#05386b; ;
-  color: white;
+  background-color:#5CDB95 ;
+  border:0px ;
+  color: #3F3F41;
+  width: 30%;
+  height: 40px;
+  font-size: 15px;
 }
 
-.row {
+.rowselector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
   justify-content: center;
   padding: 10px;
-  margin-top: 50px;
-  background-color: rgba(2, 160, 94, 0.5);
+}
+
+.btn {
+  background-color:#EE1945; 
+  border-color:#EE1945;
+  color: white;
+  margin: 10px;
+  font-style: bold;
 }
 
 /*Cajas*/
@@ -156,12 +181,16 @@ a {
   width: 100%;
 }
 
-.row #box{
+.rowbox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
   margin-top: 50px;
   box-sizing: border-box;
-  background-color: rgba(2, 160, 94);
+  margin-top: 50px;
 }
 
 .rounded{
@@ -171,19 +200,27 @@ a {
   box-sizing: border-box;
 }
 
-.btn-primary {
-  background-color:#05386b; ;
-  border-color:#05386b; ;
+.btn {
+  background-color:#EE1945; 
+  border-color:#EE1945;
   color: white;
   margin: 10px;
   font-style: bold;
 }
 
+.btn:hover{
+  background-color:darkred; 
+  border-color: darkred;
+  color: white;
+
+}
+
 /*Footer*/
 .footer{
-  background-color:#05386b;
+  background-color:#3F3F41;
+  border-top:white solid 5px;
+  height: 60px;
   overflow: hidden;
-  max-height: 70px;
 }
 
 .footer-left a{
@@ -197,7 +234,7 @@ a {
 }
 
 .footer-left i{
-  color: #edf5e1;
+  color:white;
   font-size: 3vh;
 }
 
@@ -208,13 +245,27 @@ a {
 
 .footer-right li{
   display :inline-block;
-  margin: 5px;
+  margin: 0px 5px;
 }
 
-.footer-right li a {
-  color:#edf5e1;
+.footer-right a {
+  text-decoration: none;
+  color:white;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;
   margin: 10px;
 }
+
+.footer-right li:hover {
+  border-bottom: solid 2px #5CDB95;
+}
+
+.footer-right a:hover {
+  color: #5CDB95;
+}
+
+.footer-left i:hover {
+  color: #5CDB95;
+}
+

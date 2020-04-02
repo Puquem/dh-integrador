@@ -21,7 +21,7 @@
 			<div class="container-title">
 				<h1>Crea tu usuario</h1>
 				<div class="right">
-					<li><a href="/users/login">&larr; Volver al login</a></li>
+					<li><a href="/users/login"><i class="fas fa-angle-left"></i> Volver al login</a></li>
 				</div>
 			</div>
 
@@ -30,7 +30,7 @@
 			<div class= "errorsList">
 				<ul>
 					<% for(let oneError of errors) { %>
-					<li id="back" class="text-danger"> - <%= oneError.msg %> </li>
+					<li id="back"> - <%= oneError.msg %> </li>
 					<% } %>
 				</ul>
 			</div>
@@ -59,7 +59,7 @@
 					</div>			
 
 				</div>
-				<div><button type="submit" class="btn btn-primary">REGISTRARSE</button></div>
+				<div><button type="submit" class="btn">REGISTRARSE</button></div>
 			</form>	
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 <head>
 	<%- include("../partials/head.ejs")%> 
 	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/css/complexList.css">
+	<link rel="stylesheet" href="/css/list.css">
 	
 	<title>METEGOL | Listado de Complejos</title>
 </head>
@@ -19,7 +19,7 @@
 			<div class="container-title">
 				<h1>Listado de complejos</h1>
 				<div class="right">
-					<li><a>AGREGAR COMPLEJO</a></li>
+					<li><a> <i class="fas fa-plus"></i>AGREGAR COMPLEJO</a></li>
 				</div>
 			</div>
 			<div class="row">
@@ -28,7 +28,7 @@
 
 					<div class="col-lg-3 col-md-6 mb-" id ="space">
 						<div class="card h-100">
-							<a><img class="card-img-top" src="/images/complexes/<%= complexes.image %>"></a>
+							<a><img class="card-img-top" style="height: 300px" src="/images/complexes/<%= complexes.image %>"></a>
 							<div class="card-body">
 								<h3 class="card-title">
 									<a><%= complexes.complex %></a>
@@ -37,7 +37,7 @@
 								<p class="card-text">Teléfono: <%= complexes.phone %></p>
 							</div>
 							<div class="card-footer">
-								<h5 class="card-text"> Canchas disponibles: <%= count %></h5>
+								<h5 class="card-text"> Canchas disponibles: 1</h5>
 								<a class="btn btn-primary" type="submit" href="/fields">VER CANCHAS</a>
 							</div>
 						</div>

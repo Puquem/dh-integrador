@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<%- include("../partials/head.ejs")%> 
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/css/createField.css">
 
-	<title>METEGOL | Agregar Cancha</title>
+<head>
+  <%- include("../partials/head.ejs")%>
+  <!--===============================================================================================-->
+  <link rel="stylesheet" href="/css/createField.css">
+
+  <title>METEGOL | Agregar Cancha</title>
 </head>
 
 <body>
-    <!--Header-->
-    <%- include("../partials/header.ejs")%> 
-    
-    <!--Main Content-->
-    <div class="align">
-      <div class="form">
+  <!--Header-->
+  <%- include("../partials/header.ejs")%>
 
-        <!-- Inicio del formulario de creación de producto -->
-        <form action="/fields" method="POST" enctype="multipart/form-data" id="fieldsForm">
-          <!-- Título del formulario -->
-          <div class="container-title">
-            <h1>Agregar cancha</h1>
-            <div class="right">
-              <li><a href="/fields">&larr; Volver al listado</a></li>
-            </div>
+  <!--Main Content-->
+  <div class="align">
+    <div class="form">
+
+      <!-- Inicio del formulario de creación de producto -->
+      <form action="/fields" method="POST" enctype="multipart/form-data" id="fieldsForm">
+        <!-- Título del formulario -->
+        <div class="container-title">
+          <h1>Agregar cancha</h1>
+          <div class="right">
+            <li><a href="/fields"><i class="fas fa-angle-left"></i> Volver al listado</a></li>
           </div>
+        </div>
 
-          <!-- Validaciones del back -->
-          <% if (typeof errors !== 'undefined') { %>
-            <div class= "errorsList">
-              <ul>
-                <% for(let oneError of errors) { %>
-                <li id="back" class="text-danger"> - <%= oneError.msg %> </li>
-                <% } %>
-              </ul>
-            </div>
-          <% } %>
+        <!-- Validaciones del back -->
+        <% if (typeof errors !== 'undefined') { %>
+        <div class="errorsList">
+          <ul>
+            <% for(let oneError of errors) { %>
+            <li id="back"> - <%= oneError.msg %> </li>
+            <% } %>
+          </ul>
+        </div>
+        <% } %>
 
-          <!-- Formulario -->
-          <div class="field-form">
-
-                    
+        <!-- Formulario -->
+        <div class="col-md-12">
+          <div class="form-row">
+            <div class="col-md-12">
               <label>Nombre del complejo:</label>
               <select class="selector" name="complexes_id" data-name="complejo">
                 <option value="">Elegí el complejo al que pertenece la cancha</option>
@@ -49,69 +50,91 @@
                 <% }) %>
               </select>
               <div class="feedback"></div>
-
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12">
               <label>Nombre de la cancha:</label>
-              <input type="text" class="input" name="name" data-name="nombre de la cancha" placeholder="Nombre de la cancha*">
-              <div class="feedback"></div>
-
-            <div class="group">                
-              <label>Tipo de cancha: </label>
-              <select class="selector" name="categories_id" data-name="tipo de cancha">
-                <option value="">Elegí el tipo de cancha</option>
-                <% categories.forEach(categories => { %>
-                <option value="<%= categories.id %>"> <%= categories.category %> </option>
-                <% }) %>
-              </select>
-              <div class="feedback"></div>
-
-              <label>Tipo de cesped: </label>
-              <select class="selector" name="grasses_id" data-name="tipo de cesped">
-                <option value="">Elegí el tipo de cesped</option>
-                <% grasses.forEach(grasses => { %>
-                <option value="<%= grasses.id %>"> <%= grasses.type %> </option>
-                <% }) %>
-              </select>
-              <div class="feedback"></div>
-
-              <label>Precio del alquiler por hora: </label>
-              <input class="input" type="number" name="price" data-name="precio" placeholder="0">
+              <input type="text" class="input" name="name" data-name="nombre de la cancha"
+                placeholder="Nombre de la cancha*">
               <div class="feedback"></div>
             </div>
-
+          </div>
+          <div class="form-row">
+            
+              <div class="col-md-4">
+                <label>Tipo de cancha: </label>
+                <select class="selector" name="categories_id" data-name="tipo de cancha">
+                  <option value="">Elegí el tipo de cancha</option>
+                  <% categories.forEach(categories => { %>
+                  <option value="<%= categories.id %>"> <%= categories.category %> </option>
+                  <% }) %>
+                </select>
+                <div class="feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label>Tipo de cesped: </label>
+                <select class="selector" name="grasses_id" data-name="tipo de cesped">
+                  <option value="">Elegí el tipo de cesped</option>
+                  <% grasses.forEach(grasses => { %>
+                  <option value="<%= grasses.id %>"> <%= grasses.type %> </option>
+                  <% }) %>
+                </select>
+                <div class="feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label>Precio del alquiler por hora: </label>
+                <input class="input" type="number" name="price" data-name="precio" placeholder="0">
+                <div class="feedback"></div>
+              </div>
+            
+          </div>
+          <div class="form-row">
+            <div class="col-md-12">
               <label>Servicios: </label>
               <input class="input" name="description" data-name="descripción" placeholder="Descripción de servicios*">
               <div class="feedback"></div>
-               
+            </div>
           </div>
 
-          <!-- Imágenes -->
-          <div class="uploads">
-            <label>Elige tres imágenes: </label>
-             
-              <div class="upload-images">
-                <label>Imagen 1:</label>
-                <input id="inputimg" type="file" name="image1" data-name="imagen">
-                <label>Imagen 2:</label>
-                <input id="inputimg" type="file" name="image2" data-name="imagen">
-                <label>Imagen 3:</label>
-                <input id="inputimg" type="file" name="image3" data-name="imagen">
+          <div class="form-row">
+            <div class="col-md-12">
+              <label>Elige tres imágenes: </label>
+            </div>
+            <div class="upload-images col-md-12">
+              <div class="form-row">
+                <div class="col-md-4">
+                  <label>Imagen 1:</label>
+                  <input class="inputimg" type="file" name="image1" data-name="imagen">
+                  <div class="feedback"></div>
+                </div>
+                <div class="col-md-4">
+                  <label>Imagen 2:</label>
+                  <input class="inputimg" type="file" name="image2" data-name="imagen">
+                  <div class="feedback"></div>
+                </div>
+                <div class="col-md-4">
+                  <label>Imagen 3:</label>
+                  <input class="inputimg" type="file" name="image3" data-name="imagen">
+                  <div class="feedback"></div>
+                </div>
               </div>
-              
-            <div class="feedback"></div>
-            
           </div>
-          <!-- Submit -->
-          <button type="submit" value="submit" class="btn btn-primary">GUARDAR</button>
-      </form>
-      </div>
-    </div>
-        
-    <!--Footer-->
-    <%- include("../partials/footer.ejs")%> 
+        </div>
 
-    <!--Vinculación al documento de validación de JS Front, al ser EJS comienza con una "/"-->
-    <script src="/js/validator.min.js"></script>
-    <script src="/js/fieldsValidator.js"></script>
+        <!-- Submit -->
+        <button type="submit" value="submit" class="btn">GUARDAR</button>
+      </form>
+    </div>
+  </div>
+
+  <!--Footer-->
+  <%- include("../partials/footer.ejs")%>
+
+  <!--Vinculación al documento de validación de JS Front, al ser EJS comienza con una "/"-->
+  <script src="/js/validator.min.js"></script>
+  <script src="/js/fieldsValidator.js"></script>
 
 </body>
+
 </html>

@@ -16,30 +16,28 @@
 		
 		<!--Main Content-->
 		<section class="jugar">			
-			<h1>METEGOL</h1>
+			<h1><b>METEGOL</b></h1>
 				<p class="subtitulo">Reservá tu cancha</P>
-					<form class="container">
-					<div class="row" id= "selector" >
-						<select name="localidad" id="localidad" class="selectpicker col-8 col-lg-3 rounded-pill">
+					<form class="searchcontainer">
+					<div class="rowselector">
+						<select class="selectpicker col-8 col-lg-3 rounded-pill" name="address" data-name="localidad">
 							<option selected>Localidad</option>
 							<option value="Palermo">Palermo</option>
 							<option value="Recoleta">Recoleta</option>
 							<option value="Belgrano">Belgrano</option>
 						</select>				
 				
-						<p><label for=""></label></p>
-						<select name="cancha" id="cancha" class="selectpicker col-8 col-lg-3 rounded-pill">
-							<option selected>Tipo de cancha</option>
-							<option value="F5">Futbol 5</option>
-							<option value="F7">Futbol 7</option>
-							<option value="F9">Futbol 9</option>
-							<option value="F11">Futbol 11</option>
+						<select class="selectpicker col-8 col-lg-3 rounded-pill" name="categories_id" data-name="tipo de cancha">
+							<option value="">Tipo de cancha</option>
+							<% categories.forEach(categories => { %>
+							<option value="<%= categories.id %>"> <%= categories.category %> </option>
+							<% }) %>
 						</select>
 						
 						<input type="date" name="fecha" placeholder="Fecha" class="selectpicker col-8 col-lg-3 rounded-pill">
 						
 					</div>
-						<a class="btn btn-primary" type="submit" href="/fields">BUSCAR</a>
+						<a class="btn" type="submit" href="/fields">BUSCAR</a>
 				</form>
 		</section>
 
@@ -47,21 +45,21 @@
 		<!--Reescribí el HTML, eliminé el section y en su lugar creé rows. Dejé comentado cómo estaba antes-->
 		
 		<div class="container">
-			<div class="row" id="box">
+			<div class="rowbox" id="box">
 				<div class="col-4 text-center col-lg-4">
 						<img src="/images/futbol.jpg" class="rounded" style="max-width: 90%">
 						<!-- <input href="/fields" type="button"  value="Ver canchas disponibles"> -->
-						<a href="/fields"><h3 class="btn btn-primary btn-sm" style="max-width: 90%">Ver canchas disponibles</h3></a>
+						<a href="/fields"><h3 class="btn btn-sm" style="max-width: 90%">Ver canchas disponibles</h3></a>
 				</div>
 				<div class="col-4 text-center col-lg-4">
 						<img src="/images/torneo.jpg" class="rounded" style="max-width: 90%">
 						<!-- <input type="button" class="btn btn-primary btn-sm" value="Ver complejos disponibles"style="max-width: 90%;"> -->
-						<a href="/complexes"><h3 class="btn btn-primary btn-sm" style="max-width: 90%">Ver complejos disponibles</h3></a>
+						<a href="/complexes"><h3 class="btn btn-sm" style="max-width: 90%">Ver complejos disponibles</h3></a>
 				</div>
 				<div class="col-4 text-center col-lg-4">
 						<img src="/images/equipo.jpg" class="rounded" style="max-width: 90%">
 						<!-- <input type="button" class="btn btn-primary btn-sm" value="Unirme a un partido"style="max-width: 90%;"> -->
-						<a><h3 class="btn btn-primary btn-sm" style="max-width: 90%">Ver torneos disponibles</h3></a>
+						<a><h3 class="btn btn-sm" style="max-width: 90%">Ver torneos disponibles</h3></a>
 				</div>
 			</div>
 		</div>

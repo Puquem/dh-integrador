@@ -20,9 +20,9 @@
 		<div class="form">
 			<h1 class="nombreCancha"> <%= fields.name %></h1>
 			<div class="container-title">
-				<h3 class="nombreComplejo"> Complejo: <%= fields.complexes.complex %></h3>
+				<h2 class="nombreComplejo"> Complejo: <%= fields.complexes.complex %></h2>
 				<div class="right">
-					<li><a href="/fields/">&larr; Volver al listado</a></li>
+					<li><a href="/fields/"><i class="fas fa-angle-left"></i>Volver al listado</a></li>
 				</div>
 			</div>
 			
@@ -38,13 +38,13 @@
 					</ul>
 					<div class="carousel-inner">
 					  <div class="carousel-item active">
-						  <img src="/images/fields/<%= fields.image1 %>" class="d-block w-100" alt="...">
+						  <img style="height: 400px; width: 100%" src="/images/fields/<%= fields.image1 %>" class="d-block w-100" alt="...">
 					  </div>
 					  <div class="carousel-item">
-						<img src="/images/fields/<%= fields.image2 %>" class="d-block w-100" alt="...">
+						<img style="height: 400px; width: 100%" src="/images/fields/<%= fields.image2 %>" class="d-block w-100" alt="...">
 					  </div>
 					  <div class="carousel-item">
-						<img src="/images/fields/<%= fields.image3 %>" class="d-block w-100" alt="...">
+						<img style="height: 400px; width: 100%" src="/images/fields/<%= fields.image3 %>" class="d-block w-100" alt="...">
 					  </div>
 					</div>
 					<a class="carousel-control-prev" data-slide="prev" data-target="#carouselExampleSlidesOnly">
@@ -57,25 +57,19 @@
 
 				  <!-- Descripción producto -->	
 				<div class="descripcion">
-					<h3 class="titulo">Dirección</h3>
-					<p><%= fields.complexes.address %></p>
+					<h3 class="titulo"><b>Dirección: </b> <%= fields.complexes.address %></h3>
 					<p><a href="https://www.google.com/maps/search/<%= fields.complexes.address %>">Ver ubicación en el mapa</a></p>
-					<h3 class="titulo">Teléfono</h3>
-					<p><%= fields.complexes.phone %></p>
-					<h3 class="titulo">Servicios</h3>
-					<p><%= fields.description %></p>
-					<h3 class="titulo">Cesped</h3>
-					<p><%= fields.grasses.type %></p>
-					<h3 class="titulo">Cantidad de Jugadores</h3>
-					<p><%= fields.categories.category %></p>
-					<h3 class="titulo">Precio por hora</h3>
-					<p>ARS <%= fields.price %></p>
+					<h3 class="titulo"><b>Teléfono</b>: <%= fields.complexes.phone %> </h3>
+					<h3 class="titulo"><b>Servicios: </b> <%= fields.description %></h3>
+					<h3 class="titulo"><b>Césped: </b> <%= fields.grasses.type %> </h3>
+					<h3 class="titulo"><b>Cantidad de jugadores: </b> <%= fields.categories.category %> </h3>
+					<h3 class="titulo"><b>Precio por hora: </b> ARS <%= fields.price %></h3>
 					
 					<section class="buttons">
 						<form class="has-buttons" action="?_method=DELETE" method="POST" href="/fields/<%= fields.id %>" onclick="return confirm('¿Está seguro que desea eliminar esta cancha?')">
-							<button class="btn btn-danger" type="submit">ELIMINAR</button>
+							<button class="btn" id="delete" type="submit">ELIMINAR</button>
 						</form>
-						<a class="btn btn-primary" type="submit" href="/fields/<%= fields.id %>/edit">EDITAR</a>
+						<a class="btn" id= "edit" type="submit" href="/fields/<%= fields.id %>/edit">EDITAR</a>
 					</section>
 				</div> 	
 			</div>

@@ -25,7 +25,7 @@
 					<div class= "errorsList">
 						<ul>
 							<% for(let oneError of errors) { %>
-							<li id="back" class="text-danger"> - <%= oneError.msg %> </li>
+							<li id="back"> - <%= oneError.msg %> </li>
 							<% } %>
 						</ul>
 					</div>
@@ -41,19 +41,24 @@
 						<input class="input"type="password" data-name="contraseña" placeholder="Contraseña*" name="password">
 						<div class="feedback"></div>
 
-						<div class="form-check form-check-inline" id="checkbox">
+
+						<div class="form-check">
+							<input name="remember" value="remember" class="form-check-input position-static" type="checkbox" id="blankCheckbox">
+							<label>Recordarme</label>
+						</div>
+						<!-- <div class="form-check form-check-inline" id="checkbox">
 							<input class="input" class="form-check-input" type="radio" name="remember" value="remember">
 							<label>    Recordarme</label>
-						</div>
+						</div> -->
 					</div>
 				</div>
-			<div><button type="submit" class="btn btn-primary">INGRESAR</button></div>
+			<div><button type="submit" class="btn">INGRESAR</button></div>
 			</form>
 			
 			<div class="manageUser">
 				
 					<label> ¿No tienes usuario? </label>	
-					<a class="btn btn-primary" type="submit" href="/users/create">REGISTRATE AQUÍ</a>				
+					<a class="btn" type="submit" href="/users/create">REGISTRATE AQUÍ</a>				
 				
 			</div>	
 		

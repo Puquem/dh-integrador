@@ -22,7 +22,7 @@
                 <div class="container-title">
                     <h1>Editar usuario</h1>
                     <div class="right">
-                        <li><a href="/users/<%= users.id %>">&larr; Volver al perfil de usuario</a></li>
+                        <li><a href="/users/<%= users.id %>"><i class="fas fa-angle-left"></i> Volver al perfil de usuario</a></li>
                     </div>
                 </div>
             
@@ -35,16 +35,16 @@
 						<input type="text" class="input" name="surname" value="<%= users.surname %>">
 						<label>Correo electrónico:</label>
 						<input type="text" class="input" name="email" value="<%= users.email %>">
-                        <label>Avatar:</label>
-                        <% if (users.avatar) { %>
-                            <img src="/images/users/<%= users.avatar %>" alt="">
-                            <input type="hidden" name="avatar" value="<%= users.avatar %>">
-                        <% } %>
-						<input type="file" name="avatar" title="Avatar">
+						<label>Avatar:</label>
+						<% if (users.avatar) { %>
+							<img class="avatar" src="/images/avatars/<%= users.avatar %>">
+							<input type="hidden" readonly name="currentImage" name="avatar" value="<%= users.avatar %>">
+						<% } %>
+						<input type="file" class="input" name="avatar" title="Avatar" value="<%= users.avatar %>">
 					</div>			
-
+					
 				</div>
-            <div><button type="submit" class="btn btn-primary">GUARDAR CAMBIOS</button></div>
+            <div><button type="submit" class="btn">GUARDAR CAMBIOS</button></div>
             </form>	
 		</div>
 	</div>
