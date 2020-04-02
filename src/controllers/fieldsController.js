@@ -9,7 +9,7 @@ const { validationResult } = require('express-validator');
 const controller = {
     index: (req, res) => {
         db.Fields
-            .findAll({include: ['categories']})
+            .findAll({include: ['categories', 'complexes']})
             .then(fields => {
                 if(fields) {
                     return res.render('fields/index', { fields });

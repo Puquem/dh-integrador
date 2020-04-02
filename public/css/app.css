@@ -151,6 +151,11 @@ ul,ol{
   margin-top: 50px; 
 }
 
+.form-row{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 .selectpicker{
   background-color:#5CDB95 ;
   border:0px ;

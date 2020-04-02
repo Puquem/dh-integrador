@@ -19,9 +19,11 @@
 		<div class="box">
 			<div class="container-title">
 				<h1>Listado de canchas</h1>
-				<div class="right">
-					<li><a href="/fields/create"><i class="fas fa-plus"></i>AGREGAR CANCHAS</a></li>
-				</div>
+				<% if(isAuthenticated) { %>
+					<div class="right">
+						<li><a href="/fields/create"><i class="fas fa-plus"></i>AGREGAR CANCHAS</a></li>
+					</div>
+				<% } %>
 			</div>
 			<div class="row">
 				
@@ -34,6 +36,7 @@
 								<h4 class="card-title">
 									<a href="/fields/<%= fields.id %>"><%= fields.name %></a>
 								</h4>
+								<h5><b style= "color:#5CDB95";"><%= fields.complexes.complex %></b></h5>
 								<h5><b><%= fields.categories.category %></b></h5>
 								<p class="card-text"><%= fields.description %></p>
 							</div>
