@@ -40,7 +40,12 @@ const controller = {
     fields:(req, res) => {
         //Dos variables para obetener datos de la DB, una para el precio total y otra para obtener todas las canchas
         let totalAmount = db.Fields.sum('price');
-        let allFields = db.Fields.findAll();
+        let allFields = db.Fields.findAll(
+            {
+                order: [ ['id', 'DESC']],
+                attributes: ['id','name', 'price','description', 'image1'],
+            }
+           );
     
         // Una vez que se ejecutaron ambas queries, pasamos al then
         Promise.all([totalAmount, allFields])
